@@ -21,6 +21,9 @@
 #include <qwt_plot_magnifier.h>
 #include <qwt_plot_curve.h>
 #include <QVector>
+#include <qwt_plot_panner.h>
+#include <qwt_plot_grid.h>
+#include <qwt_legend.h>
 
 class graph: public QDialog
 {
@@ -28,11 +31,13 @@ class graph: public QDialog
 public:
 
     QwtPlot *gr;
+    QwtPlotPanner *d_panner;
     QwtPlotCurve *curve;
     QwtSymbol *symbol;
-    graph(QWidget *parent,QPolygonF point);
+    graph(QWidget *parent,QPolygonF point);//в идее загонять вектор и для каждого его элемента строить кривую
+
 public slots:
-    void makeme();
+    void makeme();//ненужен
 
 };
 
@@ -40,7 +45,7 @@ class Win1: public QDialog
 {
     Q_OBJECT
 public:
-    QVector  <int> vec;
+    QVector  <QPolygonF> vec;//пытаюсь загнать точки в вектора. Я кажется ебанулся...
     QPolygonF points;
      //QPolygonF points;
     //yjxm

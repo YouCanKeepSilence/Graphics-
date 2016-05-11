@@ -71,9 +71,20 @@ void Win1::FileAdd(QString str)
 
 void Win1::AddClik()
 {
-    vec.push_back(x->text().toInt());
-    qDebug() << vec;
+    static int i=0;
+
+      qDebug()<<i;
+
     points<<QPointF(x->text().toInt(),y->text().toInt());
+    if(i==0)
+    {
+        vec.push_back(points);
+    }
+    i++;
+    vec[0]=points;
+    qDebug()<<i;
+    //vec[0]=points;
+    qDebug() << vec;
     qDebug() << points;
 
 }
@@ -95,6 +106,16 @@ graph::graph(QWidget *parent,QPolygonF point)
     QHBoxLayout *a =new QHBoxLayout;
     a->addWidget(gr);
     setLayout(a);
+    gr->setTitle( "Qwt demonstration" ); // заголовок
+    gr->setCanvasBackground( Qt::white ); // цвет фона
+    // Параметры осей координат
+    gr->setAxisTitle(QwtPlot::yLeft, "Y");
+    gr->setAxisTitle(QwtPlot::xBottom, "X");
+    gr->insertLegend( new QwtLegend() );
+    // #include <qwt_plot_grid.h>
+        QwtPlotGrid *grid = new QwtPlotGrid(); //
+        grid->setMajorPen(QPen( Qt::gray, 2 )); // цвет линий и толщина
+        grid->attach( gr );
     curve= new QwtPlotCurve();
     curve->setTitle( "Demo Curve" );
     curve->setPen( Qt::blue, 6 ); // цвет и толщина кривой
@@ -107,6 +128,9 @@ graph::graph(QWidget *parent,QPolygonF point)
     QwtPlotMagnifier *magnifier = new QwtPlotMagnifier(gr->canvas());
         // клавиша, активирующая приближение/удаление
     magnifier->setMouseButton(Qt::MidButton);
+    QwtPlotPanner *d_panner = new QwtPlotPanner( gr->canvas() );
+    // клавиша, активирующая перемещение
+    d_panner->setMouseButton( Qt::RightButton );
 
 }
 
