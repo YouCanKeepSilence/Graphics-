@@ -25,6 +25,7 @@
 #include <qwt_plot_grid.h>
 #include <qwt_legend.h>
 
+
 class graph: public QDialog
 {
     Q_OBJECT
