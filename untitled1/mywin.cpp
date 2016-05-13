@@ -68,26 +68,27 @@ void Win1::FileAdd(QString str)
         Postr->setEnabled(!str.isEmpty());
 }
 
+void Win1::NewGr()
+{
+    vec.push_back(points);
+    countGR=vec.size();
+}
 
 void Win1::AddClik()
 {
     static int i=0;
-
-      qDebug()<<i;
-
-    points<<QPointF(x->text().toInt(),y->text().toInt());
-    if(i==0)
+    int np;//Номер введенной прямой.
+    /*if (vec.size()>np)
     {
+        //Диалоговое окно, просит поменять прямую типо нет такой.
+    }*/
+    if(i==0)
         vec.push_back(points);
-    }
+    vec[0]<<QPointF(x->text().toInt(),y->text().toInt());
     i++;
-    vec[0]=points;
-    qDebug()<<i;
     //vec[0]=points;
-    qDebug() << vec;
-    qDebug() << points;
-
 }
+
 void Win1::PostrClick()
 {
     if(mgr!=NULL)
@@ -95,36 +96,54 @@ void Win1::PostrClick()
         mgr->close();
         delete mgr;
     }
-    mgr=new graph(this,points);
+    mgr=new graph(this,vec);
     mgr->show();
     mgr->exec();
 }
 
-graph::graph(QWidget *parent,QPolygonF point)
+graph::graph(QWidget *parent, QVector<QPolygonF> vector)
 {
     QwtPlot *gr = new QwtPlot;
     QHBoxLayout *a =new QHBoxLayout;
     a->addWidget(gr);
     setLayout(a);
-    gr->setTitle( "Qwt demonstration" ); // заголовок
+    gr->setTitle( "Графики" ); // заголовок
     gr->setCanvasBackground( Qt::white ); // цвет фона
     // Параметры осей координат
     gr->setAxisTitle(QwtPlot::yLeft, "Y");
     gr->setAxisTitle(QwtPlot::xBottom, "X");
     gr->insertLegend( new QwtLegend() );
     // #include <qwt_plot_grid.h>
-        QwtPlotGrid *grid = new QwtPlotGrid(); //
-        grid->setMajorPen(QPen( Qt::gray, 2 )); // цвет линий и толщина
-        grid->attach( gr );
-    curve= new QwtPlotCurve();
+    QwtPlotGrid *grid = new QwtPlotGrid(); //
+    grid->setMajorPen(QPen( Qt::gray, 2 )); // цвет линий и толщина
+    grid->attach( gr );
+
+    for(int i=0;i<vector.size();i++)
+    {
+        QString buffer;
+        curves.push_back(new QwtPlotCurve());
+        buffer= QString("Прямая № %1").arg(i+1);
+        curves[i]->setTitle(buffer);
+        curves[i]->setPen( Qt::blue, 6 ); // цвет и толщина кривой
+        curves[i]->setRenderHint
+                 ( QwtPlotItem::RenderAntialiased, true );
+        symbol = new QwtSymbol( QwtSymbol::Ellipse,QBrush( Qt::yellow ), QPen( Qt::red, 2 ), QSize( 8, 8 ) );
+        curves[i]->setSymbol( symbol );
+        curves[i]->setSamples(vector[i]);
+        curves[i]->attach(gr);
+        buffer.clear();
+        qDebug()<<i;
+    }
+
+    /*curve= new QwtPlotCurve();
     curve->setTitle( "Demo Curve" );
     curve->setPen( Qt::blue, 6 ); // цвет и толщина кривой
     curve->setRenderHint
              ( QwtPlotItem::RenderAntialiased, true );
     symbol = new QwtSymbol( QwtSymbol::Ellipse,QBrush( Qt::yellow ), QPen( Qt::red, 2 ), QSize( 8, 8 ) );
     curve->setSymbol( symbol );
-    curve->setSamples(point);
-    curve->attach(gr);
+    //curve->setSamples(vector);
+    curve->attach(gr);*/
     QwtPlotMagnifier *magnifier = new QwtPlotMagnifier(gr->canvas());
         // клавиша, активирующая приближение/удаление
     magnifier->setMouseButton(Qt::MidButton);
