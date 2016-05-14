@@ -13,10 +13,16 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp \
-    mywin.cpp
+    WinMain.cpp \
+    NewGraphWindow.cpp \
+    VisualGraph.cpp
 
 HEADERS  += \
-    mywin.h
+    WinMain.h \
+    NewGraphWindow.h \
+    libs.h \
+    graphic.h \
+    VisualGraph.h
 
 FORMS    +=
 INCLUDEPATH += /usr/include/qwt/
