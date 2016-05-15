@@ -145,6 +145,13 @@ void MainWindow::click_on_canvas( const QPoint &pos )
     //строкии ввода координат
     ui->lineEditX->setText(QString::number(x));
     ui->lineEditY->setText(QString::number(y));
+    //выделить ближайшую точку
+    if(ui->UserCurve->count()>0)
+    {
+    int curve_index=ui->UserCurve->currentIndex();
+    free_index=base[curve_index].FindNear(x,y);
+    reshow();
+    }
 }
 
 graph::graph()
@@ -331,3 +338,26 @@ void MainWindow::on_actionDelete_curve_triggered()
             }
         }
 }
+
+int graph::FindNear(double coordX,double coordY)
+{
+    int i,index=-1,mindlin=-1;
+    int bufdlin;
+    if(tchk.size()>0)
+    {
+        index=0;
+        mindlin=(tchk[0].x()-coordX)*(tchk[0].x()-coordX)+(tchk[0].y()-coordY)*(tchk[0].y()-coordY);
+    }
+    for(i=1;i<tchk.size();i++)
+    {
+        bufdlin=(tchk[i].x()-coordX)*(tchk[i].x()-coordX)
+                +(tchk[i].y()-coordY)*(tchk[i].y()-coordY);
+        if(bufdlin<mindlin)
+        {
+            index=i;
+            mindlin=bufdlin;
+        }
+    }
+    return index;
+}
+
