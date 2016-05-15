@@ -12,8 +12,11 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->lineEditY->setValidator(doubler);
     free_index=-1;
     ui->add->setEnabled(0);
+<<<<<<< HEAD
     litwin=NULL;
     DelWin=NULL;
+=======
+>>>>>>> 24ec7d7193e13c24447d757b00658ee55ff5a9ac
     // Создать поле со шкалами для отображения графика
     addPlot();
 
@@ -147,6 +150,8 @@ void MainWindow::click_on_canvas( const QPoint &pos )
     //строкии ввода координат
     ui->lineEditX->setText(QString::number(x));
     ui->lineEditY->setText(QString::number(y));
+<<<<<<< HEAD
+=======
     //выделить ближайшую точку
     if(ui->UserCurve->count()>0)
     {
@@ -154,6 +159,7 @@ void MainWindow::click_on_canvas( const QPoint &pos )
     free_index=base[curve_index].FindNear(x,y);
     reshow();
     }
+>>>>>>> 24ec7d7193e13c24447d757b00658ee55ff5a9ac
 }
 
 graph::graph()
@@ -282,6 +288,7 @@ void MainWindow::on_TwoL_clicked()
 
 void MainWindow::on_actionNew_curve_triggered()
 {
+<<<<<<< HEAD
     if(litwin!=NULL)
     {
         litwin->close();
@@ -289,6 +296,10 @@ void MainWindow::on_actionNew_curve_triggered()
     }
     class graph nov;
     litwin=new MyNewCurve(nov,this);
+=======
+    class graph nov;
+    MyNewCurve *litwin=new MyNewCurve(nov,this);
+>>>>>>> 24ec7d7193e13c24447d757b00658ee55ff5a9ac
     litwin->show();
     int i=litwin->exec();
     if (i==0)
@@ -298,7 +309,10 @@ void MainWindow::on_actionNew_curve_triggered()
         statusBar()->showMessage(nov.name);
         addCurve(nov);
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 24ec7d7193e13c24447d757b00658ee55ff5a9ac
 }
 
 void MainWindow::on_lineEditX_textChanged(const QString &arg1)
@@ -327,6 +341,7 @@ void MainWindow::on_UserCurve_currentIndexChanged(int index)
 
 void MainWindow::on_actionDelete_curve_triggered()
 {
+<<<<<<< HEAD
     if(DelWin!=NULL)
     {
         DelWin->close();
@@ -335,6 +350,11 @@ void MainWindow::on_actionDelete_curve_triggered()
     if(ui->UserCurve->count()!=0)
         {
         DelWin=new MyDeleteCurve(this,base[ui->UserCurve->currentIndex()].name);
+=======
+    if(ui->UserCurve->count()!=0)
+        {
+        MyDeleteCurve *DelWin=new MyDeleteCurve(this,base[ui->UserCurve->currentIndex()].name);
+>>>>>>> 24ec7d7193e13c24447d757b00658ee55ff5a9ac
         DelWin->show();
             int i=DelWin->exec();
             if (i==0)
@@ -348,11 +368,11 @@ void MainWindow::on_actionDelete_curve_triggered()
                 free_index=-1;
                 reshow();
                 statusBar()->showMessage("deleted");
-                if(ui->UserCurve->count()==0)
-                    ui->add->setEnabled(false);
             }
         }
 }
+<<<<<<< HEAD
+=======
 
 int graph::FindNear(double coordX,double coordY)
 {
@@ -376,3 +396,4 @@ int graph::FindNear(double coordX,double coordY)
     return index;
 }
 
+>>>>>>> 24ec7d7193e13c24447d757b00658ee55ff5a9ac
