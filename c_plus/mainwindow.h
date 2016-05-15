@@ -38,6 +38,8 @@ public:
     //тоже самое но с замещением точки если координата x
     //одна и таже
     void MoveFromBackWithout();
+    //Возращает индекс точки ближайшей к передаваемым координатам
+    int FindNear(double coordX,double coordY);
 };
 
 
