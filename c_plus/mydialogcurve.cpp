@@ -79,13 +79,24 @@ void MyNewCurve::TextChanged(QString str)
     ok->setEnabled(!str.isEmpty());// isEmpty -пустая или нет
 }
 
-MyDeleteCurve::MyDeleteCurve(QWidget *parent)
+
+MyDeleteCurve::MyDeleteCurve(QWidget *parent, QString name)
 {
-    /*
-    text=new QLabel;
-    choose=new QComboBox;
-    ok=new QPushButton;
-    cancel=new QPushButton;
+
+    text=new QLabel("Удалить кривую : "+ name +"?");
+
+    ok=new QPushButton("Удалить");
+    cancel=new QPushButton("Отмена");
     Lone=new QHBoxLayout;
-    Ltwo=new QHBoxLayout;*/
+    Lone->addWidget(text);
+    Ltwo=new QHBoxLayout;
+    Ltwo->addWidget(ok);
+    Ltwo->addWidget(cancel);
+    Final=new QVBoxLayout;
+    Final->addLayout(Lone);
+    Final->addLayout(Ltwo);
+    setLayout(Final);
+    connect(ok,SIGNAL(clicked(bool)),this,SLOT(accept()));
+    connect(cancel,SIGNAL(clicked(bool)),this,SLOT(reject()));
+
 };

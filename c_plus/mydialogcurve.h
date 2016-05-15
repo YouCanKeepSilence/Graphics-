@@ -43,12 +43,14 @@ class MyDeleteCurve:public QDialog
 {
     Q_OBJECT
     QLabel *text;
-    QComboBox *choose;
+
     QPushButton *ok;
     QPushButton *cancel;
     QHBoxLayout *Lone;
     QHBoxLayout *Ltwo;
+    QVBoxLayout *Final;
 public:
-    MyDeleteCurve(QWidget *parent=0);
+    MyDeleteCurve(QWidget *parent, QString name);
+
 };
 #endif // MYDIALOGCURVE_H

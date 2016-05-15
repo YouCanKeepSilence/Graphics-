@@ -219,7 +219,7 @@ void MainWindow::reshow()
 {
     QPolygonF free;
     if(free_index>-1)
-    free<<base[ui->UserCurve->currentIndex()].tchk[free_index];
+        free<<base[ui->UserCurve->currentIndex()].tchk[free_index];
     free_tchk->setSamples(free ); // ассоциировать набор точек с кривой
     ui->Qwt_Widget->replot();
 }
@@ -233,9 +233,10 @@ void MainWindow::on_OneR_clicked()
 {
     if(ui->UserCurve->count()>0)
     {
-    int curve_index=ui->UserCurve->currentIndex();
-    if(free_index<base[curve_index].tchk.size()-1) free_index++;
-    reshow();
+        int curve_index=ui->UserCurve->currentIndex();
+        if(free_index<base[curve_index].tchk.size()-1)
+            free_index++;
+        reshow();
     }
 }
 
@@ -243,7 +244,8 @@ void MainWindow::on_OneR_clicked()
 void MainWindow::on_OneL_clicked()
 {
     if(ui->UserCurve->count()>0)
-    if(free_index>0) free_index--;
+        if(free_index>0)
+            free_index--;
     reshow();
 }
 
@@ -261,8 +263,10 @@ void MainWindow::on_TWoR_clicked()
 void MainWindow::on_TwoL_clicked()
 {   if(ui->UserCurve->count()>0)
     {
-    if(free_index>10)free_index-=10;
-    else free_index=0;
+    if(free_index>10)
+        free_index-=10;
+    else
+        free_index=0;
     }
     reshow();
 }
@@ -273,7 +277,8 @@ void MainWindow::on_actionNew_curve_triggered()
     MyNewCurve *litwin=new MyNewCurve(nov,this);
     litwin->show();
     int i=litwin->exec();
-    if (i==0)statusBar()->showMessage("cancel");
+    if (i==0)
+        statusBar()->showMessage("cancel");
     if (i==1)
     {
         statusBar()->showMessage(nov.name);
@@ -284,9 +289,10 @@ void MainWindow::on_actionNew_curve_triggered()
 void MainWindow::on_lineEditX_textChanged(const QString &arg1)
 {
     if(ui->UserCurve->count()>0)
-    if((!ui->lineEditY->text().isEmpty())&&(!ui->lineEditY->text().isEmpty()))
-    ui->add->setEnabled(1);
-    else ui->add->setEnabled(0);
+        if((!ui->lineEditY->text().isEmpty())&&(!ui->lineEditY->text().isEmpty()))
+            ui->add->setEnabled(1);
+    else
+        ui->add->setEnabled(0);
 
 }
 
@@ -294,6 +300,34 @@ void MainWindow::on_lineEditY_textChanged(const QString &arg1)
 {
     if(ui->UserCurve->count()>0)
     if((!ui->lineEditY->text().isEmpty())&&(!ui->lineEditY->text().isEmpty()))
-    ui->add->setEnabled(1);
-    else ui->add->setEnabled(0);
+        ui->add->setEnabled(1);
+    else
+        ui->add->setEnabled(0);
+}
+
+void MainWindow::on_UserCurve_currentIndexChanged(int index)
+{
+    free_index=-1;
+}
+
+void MainWindow::on_actionDelete_curve_triggered()
+{
+    if(ui->UserCurve->count()!=0)
+        {
+        MyDeleteCurve *DelWin=new MyDeleteCurve(this,base[ui->UserCurve->currentIndex()].name);
+        DelWin->show();
+            int i=DelWin->exec();
+            if (i==0)
+                statusBar()->showMessage("cancel");
+            if (i==1)
+            {
+                int z=ui->UserCurve->currentIndex();
+                delete base[z].curva;
+                base.erase(base.begin()+z);
+                ui->UserCurve->removeItem(z);
+                free_index=-1;
+                reshow();
+                statusBar()->showMessage("deleted");
+            }
+        }
 }

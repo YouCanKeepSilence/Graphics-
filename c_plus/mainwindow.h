@@ -13,6 +13,7 @@
 #include <qwt_picker_machine.h>
 #include <QMainWindow>
 #include <QVector>
+#include <QMessageBox>
 namespace Ui {
 class MainWindow;
 }
@@ -55,10 +56,15 @@ private Q_SLOTS:
     void on_TwoL_clicked();// pushbutton <<
     //Открыть окно добавления графика
     void on_actionNew_curve_triggered();
+
     //При измениении содержимого ввода провереем на заполненовсть
     //и делаем возможным или невозможным нажатее кнопки add
     void on_lineEditX_textChanged(const QString &arg1);
     void on_lineEditY_textChanged(const QString &arg1);
+    void on_UserCurve_currentIndexChanged(int index);
+
+    void on_actionDelete_curve_triggered();
+
 private:
     QVector<graph> base;//База с прямыми пользователя
     Ui::MainWindow *ui;
