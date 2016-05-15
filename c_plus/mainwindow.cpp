@@ -12,6 +12,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->lineEditY->setValidator(doubler);
     free_index=-1;
     ui->add->setEnabled(0);
+    litwin=NULL;
+    DelWin=NULL;
     // Создать поле со шкалами для отображения графика
     addPlot();
 
@@ -273,8 +275,13 @@ void MainWindow::on_TwoL_clicked()
 
 void MainWindow::on_actionNew_curve_triggered()
 {
+    if(litwin!=NULL)
+    {
+        litwin->close();
+        delete litwin;
+    }
     class graph nov;
-    MyNewCurve *litwin=new MyNewCurve(nov,this);
+    litwin=new MyNewCurve(nov,this);
     litwin->show();
     int i=litwin->exec();
     if (i==0)
@@ -284,6 +291,7 @@ void MainWindow::on_actionNew_curve_triggered()
         statusBar()->showMessage(nov.name);
         addCurve(nov);
     }
+
 }
 
 void MainWindow::on_lineEditX_textChanged(const QString &arg1)
@@ -312,9 +320,14 @@ void MainWindow::on_UserCurve_currentIndexChanged(int index)
 
 void MainWindow::on_actionDelete_curve_triggered()
 {
+    if(DelWin!=NULL)
+    {
+        DelWin->close();
+        delete DelWin;
+    }
     if(ui->UserCurve->count()!=0)
         {
-        MyDeleteCurve *DelWin=new MyDeleteCurve(this,base[ui->UserCurve->currentIndex()].name);
+        DelWin=new MyDeleteCurve(this,base[ui->UserCurve->currentIndex()].name);
         DelWin->show();
             int i=DelWin->exec();
             if (i==0)

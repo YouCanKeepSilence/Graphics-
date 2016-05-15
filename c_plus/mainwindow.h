@@ -17,6 +17,8 @@
 namespace Ui {
 class MainWindow;
 }
+class MyNewCurve;
+class MyDeleteCurve;
 
 class graph{
 public:
@@ -68,6 +70,8 @@ private Q_SLOTS:
 private:
     QVector<graph> base;//База с прямыми пользователя
     Ui::MainWindow *ui;
+    MyNewCurve *litwin;
+    MyDeleteCurve *DelWin;
     int free_index;//точка для ->
     /*Прямая состоящая из одной точки,которая точно
      *есть у пользователя, используемая для отображаения
