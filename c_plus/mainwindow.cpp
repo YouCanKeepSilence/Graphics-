@@ -376,3 +376,19 @@ int graph::FindNear(double coordX,double coordY)
     return index;
 }
 
+
+void MainWindow::on_actionOpen_file_triggered()
+{
+    QString fileName = QFileDialog::getOpenFileName(this, tr("Open File"), "", tr(".txt (*.txt)"));//Сюда дописывать форматы
+
+        if (fileName != "") {
+            QFile file(fileName);
+            qDebug()<<fileName;
+            if (!file.open(QIODevice::ReadOnly)) {
+                QMessageBox::critical(this, tr("Error"), tr("Could not open file")); //Типо если файл нельзя читать то ошибко.
+                return;
+            }
+
+            file.close();
+        }
+}

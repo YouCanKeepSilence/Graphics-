@@ -14,6 +14,9 @@
 #include <QMainWindow>
 #include <QVector>
 #include <QMessageBox>
+#include <QFileDialog>
+#include <QFile>
+
 namespace Ui {
 class MainWindow;
 }
@@ -68,6 +71,8 @@ private Q_SLOTS:
     void on_UserCurve_currentIndexChanged(int index);
 
     void on_actionDelete_curve_triggered();
+
+    void on_actionOpen_file_triggered();
 
 private:
     QVector<graph> base;//База с прямыми пользователя
