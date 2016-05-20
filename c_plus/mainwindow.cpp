@@ -14,6 +14,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->add->setEnabled(0);
     litwin=NULL;
     DelWin=NULL;
+    this->setWindowTitle("Graphics creator v. 0.9");
     // Создать поле со шкалами для отображения графика
     addPlot();
 
@@ -42,7 +43,7 @@ MainWindow::~MainWindow()
 void MainWindow::addPlot()
 {
     // #include <qwt_plot.h>
-    ui->Qwt_Widget->setTitle( "Qwt demonstration" );
+    ui->Qwt_Widget->setTitle( "Your graphics" );
     ui->Qwt_Widget->setCanvasBackground( Qt::white );
 
     // Параметры осей координат
@@ -289,6 +290,7 @@ void MainWindow::on_actionNew_curve_triggered()
     }
     class graph nov;
     litwin=new MyNewCurve(nov,this);
+    litwin->setWindowTitle("Add new curve");
     litwin->show();
     int i=litwin->exec();
     if (i==0)
@@ -391,4 +393,28 @@ void MainWindow::on_actionOpen_file_triggered()
 
             file.close();
         }
+}
+
+void MainWindow::on_actionSave_File_as_triggered()
+{
+    QString fileName = QFileDialog::getSaveFileName(this, tr("Save As"), "C://",";;Text File(*.txt);;.Doc(*.doc)");
+    if (fileName != "")
+    {
+        QFile file(fileName);
+        if (file.open(QIODevice::WriteOnly))
+        {
+            QTextStream out(&file);
+            for(int i=0; i<base.size(); i++)
+            {
+                out << base[i].name << "\n" << base[i].red << "\n" << base[i].green << "\n" << base[i].blue << "\n" << base[i].pen << "\n";
+                for(int j=0; j<base[i].tchk.size();j++)
+                {
+                        out<<base[i].tchk[j].x()<<"\n"<<base[i].tchk[j].y()<<"\n";
+                        //return;
+                }
+            }
+        file.close();
+        }
+    }
+
 }

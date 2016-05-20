@@ -74,6 +74,8 @@ private Q_SLOTS:
 
     void on_actionOpen_file_triggered();
 
+    void on_actionSave_File_as_triggered();
+
 private:
     QVector<graph> base;//База с прямыми пользователя
     Ui::MainWindow *ui;
