@@ -383,38 +383,100 @@ void MainWindow::on_actionOpen_file_triggered()
 {
     QString fileName = QFileDialog::getOpenFileName(this, tr("Open File"), "", tr(".txt (*.txt)"));//Сюда дописывать форматы
 
-        if (fileName != "") {
+        if (fileName != "")
+        {
             QFile file(fileName);
-            qDebug()<<fileName;
-            if (!file.open(QIODevice::ReadOnly)) {
+            QTextStream in(&file);
+            if (!file.open(QIODevice::ReadOnly))
+            {
                 QMessageBox::critical(this, tr("Error"), tr("Could not open file")); //Типо если файл нельзя читать то ошибко.
                 return;
             }
+            qDebug()<<fileName[fileName.length()-1];
+            if(fileName[fileName.length()-1]=='t')//для тхт формата.
+            {
+                qDebug()<<"Тут.";
+                class graph nov;
+                int i=-1;
+                while(1)
+                {
+                    QString buf;
+                    buf=in.readLine();
+                    if(buf.isEmpty())
+                    {
+                        for(int j=0;j<base.size();j++)
+                        {
+                            base[j].curva->setSamples(base[j].tchk);
+                            reshow();
+                        }
+                        break;
+                    }
+                    if(buf.toDouble()==0)//Привет я костыль, и если будет точка 0 0 или цвет 0 0 , то писец
+                    {
 
+                        nov.name=buf;
+                        buf=in.readLine();
+                        nov.red=buf.toInt();
+                        buf=in.readLine();
+                        nov.green=buf.toInt();
+                        buf=in.readLine();
+                        nov.blue=buf.toInt();
+                        buf=in.readLine();
+                        nov.pen=buf.toDouble();
+                        addCurve(nov);
+                        i++;
+                    }
+                    else
+                    {
+                        QString bufy;
+                        bufy=in.readLine();
+                        base[i].tchk.push_back(QPointF(buf.toDouble(),bufy.toDouble()));
+                    }
+
+                }
+            }
             file.close();
         }
 }
 
 void MainWindow::on_actionSave_File_as_triggered()
 {
-    QString fileName = QFileDialog::getSaveFileName(this, tr("Save As"), "C://",";;Text File(*.txt);;.Doc(*.doc)");
+    QString fileName = QFileDialog::getSaveFileName(this, tr("Save As"), "C://",".txt(*.txt);;.doc(*.doc)");
     if (fileName != "")
     {
+        bool flag=0;
         QFile file(fileName);
         if (file.open(QIODevice::WriteOnly))
         {
             QTextStream out(&file);
-            for(int i=0; i<base.size(); i++)
+            if(fileName[fileName.length()-1]=='t')
             {
-                out << base[i].name << "\n" << base[i].red << "\n" << base[i].green << "\n" << base[i].blue << "\n" << base[i].pen << "\n";
-                for(int j=0; j<base[i].tchk.size();j++)
+                qDebug()<< "Это .txt" ;
+                flag=true;
+                for(int i=0; i<base.size(); i++)
                 {
-                        out<<base[i].tchk[j].x()<<"\n"<<base[i].tchk[j].y()<<"\n";
-                        //return;
+                    out << base[i].name << "\n" << base[i].red << "\n" << base[i].green << "\n" << base[i].blue << "\n" << base[i].pen << "\n";
+                    for(int j=0; j<base[i].tchk.size();j++)
+                        {
+                            out<<base[i].tchk[j].x()<<"\n"<<base[i].tchk[j].y()<<"\n";
+                            //return;
+                        }
                 }
             }
-        file.close();
+            if(fileName[fileName.length()-1]=='c')
+            {
+                qDebug()<<"Это .doc";
+                flag=true;
+            }
+            if(!flag)
+            {
+                qDebug()<<"С таким типо не работаем";
+
+            }
+            file.close();
         }
+
+
     }
 
 }
