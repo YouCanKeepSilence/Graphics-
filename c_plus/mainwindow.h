@@ -76,12 +76,15 @@ private Q_SLOTS:
 
     void on_actionSave_File_as_triggered();
 
+    void on_actionSave_File_triggered();
+
 private:
     QVector<graph> base;//База с прямыми пользователя
     Ui::MainWindow *ui;
     MyNewCurve *litwin;
     MyDeleteCurve *DelWin;
     //Добавить имя файла для кнопки "сохранить"
+    QString NameOfFile;
     int free_index;//точка для ->
     /*Прямая состоящая из одной точки,которая точно
      *есть у пользователя, используемая для отображаения

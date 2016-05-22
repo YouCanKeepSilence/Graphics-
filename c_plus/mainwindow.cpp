@@ -90,6 +90,7 @@ void MainWindow::addfreeCurve()
     free_tchk= new QwtPlotCurve;
     free_tchk->setSymbol( symbolf);
     free_tchk->setTitle( "Free point" );
+    free_tchk->setPen(Qt::gr);
     free_tchk->setRenderHint
             ( QwtPlotItem::RenderAntialiased, true ); // сглаживание
     free_tchk->attach( ui->Qwt_Widget );
@@ -409,6 +410,8 @@ void MainWindow::on_actionOpen_file_triggered()
                             base[j].curva->setSamples(base[j].tchk);
                             reshow();
                         }
+                        NameOfFile=fileName;
+                        QMessageBox::information(this,tr("Done"),tr("Успешно открыто"));
                         break;
                     }
                     if(buf.toDouble()==0)//Привет я костыль, и если будет точка 0 0 или цвет 0 0 , то писец
@@ -473,10 +476,56 @@ void MainWindow::on_actionSave_File_as_triggered()
                 qDebug()<<"С таким типо не работаем";
 
             }
+            NameOfFile=fileName;
+            QMessageBox::information(this, tr("Done"),tr("Сохранено в %1").arg(NameOfFile));
             file.close();
         }
 
 
     }
+    else
+    {
+        QMessageBox::critical(this, tr("Error"), tr("Задан пустой путь до файла.")); //Типо если файл нельзя читать то ошибко.
+        return;
+    }
 
+}
+
+void MainWindow::on_actionSave_File_triggered()
+{
+    if(!NameOfFile.isEmpty())
+    {
+
+        QFile file(NameOfFile);
+        if (file.open(QIODevice::WriteOnly))
+        {
+            QTextStream out(&file);
+            if(NameOfFile[NameOfFile.length()-1]=='t')
+            {
+                qDebug()<< "Это .txt" ;
+
+                for(int i=0; i<base.size(); i++)
+                {
+                    out << base[i].name << "\n" << base[i].red << "\n" << base[i].green << "\n" << base[i].blue << "\n" << base[i].pen << "\n";
+                    for(int j=0; j<base[i].tchk.size();j++)
+                        {
+                            out<<base[i].tchk[j].x()<<"\n"<<base[i].tchk[j].y()<<"\n";
+                            //return;
+                        }
+                }
+            }
+            if(NameOfFile[NameOfFile.length()-1]=='c')
+            {
+                qDebug()<<"Это .doc";
+
+            }
+            QMessageBox::information(this, tr("Done"),tr("Сохранено в %1").arg(NameOfFile));
+            file.close();
+        }
+    }
+    else
+    {
+        QMessageBox::critical(this, tr("Error"), tr("Нет имени файла")); //Типо если файл нельзя читать то ошибко.
+        return;
+    }
 }
