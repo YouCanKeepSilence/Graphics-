@@ -14,7 +14,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->add->setEnabled(0);
     litwin=NULL;
     DelWin=NULL;
-    this->setWindowTitle("Graphics creator v. 0.9");
+    this->setWindowTitle("Graphics creator v. 1.0");
     // Создать поле со шкалами для отображения графика
     addPlot();
 
@@ -90,7 +90,7 @@ void MainWindow::addfreeCurve()
     free_tchk= new QwtPlotCurve;
     free_tchk->setSymbol( symbolf);
     free_tchk->setTitle( "Free point" );
-    free_tchk->setPen(Qt::gr);
+    free_tchk->setPen(Qt::green);
     free_tchk->setRenderHint
             ( QwtPlotItem::RenderAntialiased, true ); // сглаживание
     free_tchk->attach( ui->Qwt_Widget );
@@ -317,8 +317,8 @@ void MainWindow::on_lineEditX_textChanged(const QString &arg1)
 void MainWindow::on_lineEditY_textChanged(const QString &arg1)
 {
     if(ui->UserCurve->count()>0)
-    if((!ui->lineEditY->text().isEmpty())&&(!ui->lineEditY->text().isEmpty()))
-        ui->add->setEnabled(1);
+        if((!ui->lineEditY->text().isEmpty())&&(!ui->lineEditY->text().isEmpty()))
+            ui->add->setEnabled(1);
     else
         ui->add->setEnabled(0);
 }
@@ -388,6 +388,7 @@ void MainWindow::on_actionOpen_file_triggered()
         {
             QFile file(fileName);
             QTextStream in(&file);
+            bool ok;
             if (!file.open(QIODevice::ReadOnly))
             {
                 QMessageBox::critical(this, tr("Error"), tr("Could not open file")); //Типо если файл нельзя читать то ошибко.
@@ -414,7 +415,8 @@ void MainWindow::on_actionOpen_file_triggered()
                         QMessageBox::information(this,tr("Done"),tr("Успешно открыто"));
                         break;
                     }
-                    if(buf.toDouble()==0)//Привет я костыль, и если будет точка 0 0 или цвет 0 0 , то писец
+                    buf.toDouble(&ok);
+                    if(!ok)
                     {
 
                         nov.name=buf;
@@ -448,6 +450,7 @@ void MainWindow::on_actionSave_File_as_triggered()
     if (fileName != "")
     {
         bool flag=0;
+
         QFile file(fileName);
         if (file.open(QIODevice::WriteOnly))
         {
