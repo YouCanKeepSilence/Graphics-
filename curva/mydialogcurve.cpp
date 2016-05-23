@@ -83,8 +83,8 @@ void MyNewCurve::TextChanged(QString str)
 MyDeleteCurve::MyDeleteCurve(QWidget *parent, QString name)
 {
 
-    text=new QLabel("Удалить кривую : "+ name +"?");
-
+    text=new QLabel("Удалить кривую : "+ name +" ?");
+    this->setWindowTitle("Delete curve");
     ok=new QPushButton("Удалить");
     cancel=new QPushButton("Отмена");
     Lone=new QHBoxLayout;
