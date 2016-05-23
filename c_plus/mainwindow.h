@@ -79,6 +79,7 @@ private Q_SLOTS:
     void on_actionSave_File_triggered();
 
 private:
+    void SaveToTxt();
     QVector<graph> base;//База с прямыми пользователя
     Ui::MainWindow *ui;
     MyNewCurve *litwin;

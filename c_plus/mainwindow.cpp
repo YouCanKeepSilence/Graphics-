@@ -379,10 +379,14 @@ int graph::FindNear(double coordX,double coordY)
     return index;
 }
 
+void MainWindow::SaveToTxt()
+{
+
+}
 
 void MainWindow::on_actionOpen_file_triggered()
 {
-    QString fileName = QFileDialog::getOpenFileName(this, tr("Open File"), "", tr(".txt (*.txt)"));//Сюда дописывать форматы
+    QString fileName = QFileDialog::getOpenFileName(this, tr("Open File"), "", tr(".txt (*.txt);; .doc (*.doc)"));//Сюда дописывать форматы
 
         if (fileName != "")
         {
@@ -440,6 +444,45 @@ void MainWindow::on_actionOpen_file_triggered()
 
                 }
             }
+            else if(fileName[fileName.length()-1]=='c')//для doc формата.
+            {
+                qDebug()<<"Тут.";
+                class graph nov;
+                int i=-1;
+                while(1)
+                {
+                    QString buf;
+                    buf=in.readLine();
+                    QStringList lst = buf.split("\t");
+                    buf.toDouble(&ok);
+                    if(lst.size()==5)
+                    {
+
+                        nov.name=lst.at(0);
+                        nov.red=lst.at(1).toInt();
+                        nov.green=lst.at(2).toInt();
+                        nov.blue=lst.at(3).toInt();
+                        nov.pen=lst.at(4).toDouble();
+                        addCurve(nov);
+                        i++;
+                    }
+                    else if(lst.size()==2)
+                    {   base[i].tchk.push_back(QPointF(lst.at(0).toDouble(),lst.at(1).toDouble()));
+
+                    }
+                    if(buf.isEmpty() && lst.size()<=1)
+                    {
+                        for(int j=0;j<base.size();j++)
+                        {
+                            base[j].curva->setSamples(base[j].tchk);
+                            reshow();
+                        }
+                        NameOfFile=fileName;
+                        QMessageBox::information(this,tr("Done"),tr("Успешно открыто"));
+                        break;
+                    }
+                }
+            }
             file.close();
         }
 }
@@ -473,6 +516,16 @@ void MainWindow::on_actionSave_File_as_triggered()
             {
                 qDebug()<<"Это .doc";
                 flag=true;
+                for(int i=0; i<base.size(); i++)
+                {
+                    out << base[i].name << "\t" << base[i].red << "\t" << base[i].green << "\t" << base[i].blue << "\t" << base[i].pen << "\n";
+                    for(int j=0; j<base[i].tchk.size();j++)
+                        {
+                            out<<base[i].tchk[j].x()<<"\t"<<base[i].tchk[j].y()<<"\n";
+                            //return;
+                        }
+                }
+
             }
             if(!flag)
             {
@@ -520,6 +573,15 @@ void MainWindow::on_actionSave_File_triggered()
             if(NameOfFile[NameOfFile.length()-1]=='c')
             {
                 qDebug()<<"Это .doc";
+                for(int i=0; i<base.size(); i++)
+                {
+                    out << base[i].name << "\t" << base[i].red << "\t" << base[i].green << "\t" << base[i].blue << "\t" << base[i].pen << "\n";
+                    for(int j=0; j<base[i].tchk.size();j++)
+                        {
+                            out<<base[i].tchk[j].x()<<"\t"<<base[i].tchk[j].y()<<"\n";
+                            //return;
+                        }
+                }
 
             }
             QMessageBox::information(this, tr("Done"),tr("Сохранено в %1").arg(NameOfFile));
