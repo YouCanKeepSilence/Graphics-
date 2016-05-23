@@ -79,7 +79,11 @@ private Q_SLOTS:
     void on_actionSave_File_triggered();
 
 private:
-    void SaveToTxt();
+    void SaveToTxt(bool &flag, QFile &file);
+    void SaveToDoc(bool &flag, QFile &file);
+    void ReadFromTxt(bool &flag, QFile &file);
+    void ReadFromDoc(bool &flag, QFile &file);
+    void CheckVector(bool &okay);
     QVector<graph> base;//База с прямыми пользователя
     Ui::MainWindow *ui;
     MyNewCurve *litwin;
