@@ -11,7 +11,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->lineEditX->setValidator(doubler);
     ui->lineEditY->setValidator(doubler);
     free_index=-1;
-    ui->add->setEnabled(0);
+    ui->checkActiv->setChecked(1);
     AbleUseBlockAdd();
     AbleUseBlockFree();
     litwin=NULL;
@@ -22,12 +22,10 @@ MainWindow::MainWindow(QWidget *parent) :
 
     // Включить масштабную сетку
     addPlotGrid();
-
-    // Кривая
-    //addfreeCurve();
     AddSimbols();
     //инициализировать вспомогатеьные кривые
     addHelpCurve();
+
     // Включить возможность приближения/удаления графика
     enableMagnifier();
 
@@ -78,9 +76,8 @@ void MainWindow::addCurve(class graph &buf)
     base[index].curva->setPen( QColor(buf.red,buf.green,buf.blue), buf.pen );
     base[index].curva->setRenderHint
             ( QwtPlotItem::RenderAntialiased, true ); // сглаживание
-
     QwtSymbol *CurveSim= new QwtSymbol( QwtSymbol::Ellipse,
-    QBrush( Qt::red ), QPen( Qt::black, 0 ), QSize( 10, 10 ) );
+    QBrush( Qt::yellow ), QPen( Qt::black ,3), QSize( 8, 8 ) );
     base[index].curva->setSymbol( CurveSim);
     base[index].curva->setTitle(buf.name);
     ui->UserCurve->addItem(buf.name,index);
@@ -88,15 +85,6 @@ void MainWindow::addCurve(class graph &buf)
 
 }
 
-void MainWindow::ChangeNewPoint()
-{
-    double x =ui->lineEditX->text().toDouble();
-    double y =ui->lineEditY->text().toDouble();
-    QPolygonF point;
-    point<<QPointF(x,y);
-    NewCurve->setSamples(point);
-    ui->Qwt_Widget->replot();
-}
 void MainWindow::enableMagnifier()
 {
     // #include <qwt_plot_magnifier.h>
@@ -125,10 +113,8 @@ void MainWindow::enablePicker()
 
     // непосредственное включение вышеописанных функций
     d_picker->setStateMachine( new QwtPickerDragPointMachine() );
-
     connect( d_picker, SIGNAL( appended( const QPoint & ) ),
             SLOT( click_on_canvas( const QPoint & ) ) );
-    connect(d_picker,SIGNAL(moved(QPoint)),SLOT(MoveNewSim(const QPoint &)));
 }
 
 void MainWindow::enableMovingOnPlot()
@@ -137,21 +123,6 @@ void MainWindow::enableMovingOnPlot()
     QwtPlotPanner *d_panner = new QwtPlotPanner( ui->Qwt_Widget->canvas() );
     // клавиша, активирующая перемещение
     d_panner->setMouseButton( Qt::RightButton );
-}
-
-void MainWindow::MoveNewSim(const QPoint &pos)
-{
-    // считываем значения координат клика
-    double x = ui->Qwt_Widget->invTransform(QwtPlot::xBottom, pos.x());
-    double y = ui->Qwt_Widget->invTransform(QwtPlot::yLeft, pos.y());
-    statusBar()->showMessage("x= " + QString::number(x) +
-                             "; y = " + QString::number(y));
-    //отправляем считанное в статус бар и
-    //строкии ввода координат
-    ui->lineEditX->setText(QString::number(x));
-    ui->lineEditY->setText(QString::number(y));
-    //выделить ближайшую точку
-    ChangeNewPoint();
 }
 
 void MainWindow::click_on_canvas( const QPoint &pos )
@@ -178,20 +149,6 @@ void MainWindow::click_on_canvas( const QPoint &pos )
 graph::graph()
 {
     curva =new QwtPlotCurve;
-}
-
-void graph::MoveFromBack()
-{
-    int i;
-    QPointF buf;
-    for(i=tchk.size()-1;i>0;i--)
-        if(tchk[i].x()<tchk[i-1].x())
-        {
-            buf=tchk[i];
-            tchk[i]=tchk[i-1];
-            tchk[i-1]=buf;
-        }
-        else break;
 }
 
 void graph::MoveFromBackWithout()
@@ -235,7 +192,7 @@ void MainWindow::on_free_clicked()
         if(free_index>-1)
         {
         base[curve_index].tchk.erase(base[curve_index].tchk.begin()+free_index);
-        if(free_index==base[curve_index].tchk.size())free_index--;
+        free_index--;
         }
         base[curve_index].curva->setSamples( base[curve_index].tchk );
         if(base[curve_index].tchk.size()==0) free_index=-1;
@@ -250,7 +207,11 @@ void MainWindow::reshow()
     if(ui->UserCurve->count()>0)
     {
         int z=ui->UserCurve->currentIndex();
+        if(ui->checkActiv->isChecked())
+        {
         ActivCurve->setSamples(base[z].tchk);
+        ActivCurve->setPen(QColor(base[z].red,base[z].green,base[z].blue),base[z].pen+2);
+        }
     }
     if(free_index>-1)
         free<<base[ui->UserCurve->currentIndex()].tchk[free_index];
@@ -259,6 +220,7 @@ void MainWindow::reshow()
     AbleUseBlockFree();
     ui->Qwt_Widget->replot();
 }
+
 
 void MainWindow::on_OneR_clicked()
 {
@@ -347,6 +309,7 @@ void MainWindow::on_lineEditY_textChanged(const QString &arg1)
 void MainWindow::on_UserCurve_currentIndexChanged(int index)
 {
     free_index=-1;
+    reshow();
 }
 
 void MainWindow::on_actionDelete_curve_triggered()
@@ -400,8 +363,148 @@ int graph::FindNear(double coordX,double coordY)
     return index;
 }
 
-void MainWindow::SaveToTxt()
+void MainWindow::SaveToTxt(bool &flag, QFile &file)
 {
+    //qDebug()<< "Это .txt" ;
+    QTextStream out(&file);
+
+    for(int i=0; i<base.size(); i++)
+    {
+        out << base[i].name << "\n" << base[i].red << "\n" << base[i].green << "\n" << base[i].blue << "\n" << base[i].pen << "\n";
+        for(int j=0; j<base[i].tchk.size();j++)
+            {
+                out<<base[i].tchk[j].x()<<"\n"<<base[i].tchk[j].y()<<"\n";
+                //return;
+            }
+    }
+    flag=true;
+
+}
+void MainWindow::SaveToDoc(bool &flag, QFile &file)
+{
+    //qDebug()<<"Это .doc";
+    QTextStream out(&file);
+    for(int i=0; i<base.size(); i++)
+    {
+        out << base[i].name << "\t" << base[i].red << "\t" << base[i].green << "\t" << base[i].blue << "\t" << base[i].pen << "\n";
+        for(int j=0; j<base[i].tchk.size();j++)
+            {
+                out<<base[i].tchk[j].x()<<"\t"<<base[i].tchk[j].y()<<"\n";
+                //return;
+            }
+    }
+    flag=true;
+}
+
+void MainWindow::ReadFromTxt(bool &flag, QFile &file)
+{
+    //qDebug()<<"Тут.";
+    bool ok;
+    QTextStream in(&file);
+    class graph nov;
+    int i=-1;
+    while(1)
+    {
+        QString buf;
+        buf=in.readLine();
+        if(buf.isEmpty())
+        {
+            for(int j=0;j<base.size();j++)
+            {
+                base[j].curva->setSamples(base[j].tchk);
+                reshow();
+            }
+            flag=true;
+            break;
+        }
+        buf.toDouble(&ok);
+        if(!ok)
+        {
+            nov.name=buf;
+            buf=in.readLine();
+            nov.red=buf.toInt();
+            buf=in.readLine();
+            nov.green=buf.toInt();
+            buf=in.readLine();
+            nov.blue=buf.toInt();
+            buf=in.readLine();
+            nov.pen=buf.toDouble();
+            addCurve(nov);
+            i++;
+        }
+        else
+        {
+            QString bufy;
+            bufy=in.readLine();
+            base[i].tchk.push_back(QPointF(buf.toDouble(),bufy.toDouble()));
+        }
+
+    }
+}
+
+void MainWindow::ReadFromDoc(bool &flag, QFile &file)
+{
+    class graph nov;
+    int i=-1;
+    QTextStream in(&file);
+    while(1)
+    {
+        QString buf;
+        buf=in.readLine();
+        QStringList lst = buf.split("\t");
+        if(lst.size()==5)
+        {
+            nov.name=lst.at(0);
+            nov.red=lst.at(1).toInt();
+            nov.green=lst.at(2).toInt();
+            nov.blue=lst.at(3).toInt();
+            nov.pen=lst.at(4).toDouble();
+            addCurve(nov);
+            i++;
+        }
+        else if(lst.size()==2)
+        {   base[i].tchk.push_back(QPointF(lst.at(0).toDouble(),lst.at(1).toDouble()));
+
+        }
+        if(buf.isEmpty() && lst.size()<=1)
+        {
+            for(int j=0;j<base.size();j++)
+            {
+                base[j].curva->setSamples(base[j].tchk);
+                reshow();
+            }
+            flag=true;
+            break;
+        }
+    }
+}
+void MainWindow::CheckVector(bool &okay)
+{
+
+        int ok=QMessageBox::warning(0,"Alarm","При открытии файла будут удалены все имеющиеся прямые. Вы согласны?","Да","Нет",QString(),0,1);
+        if(ok==0)
+        {
+            free_index=-1;
+            int z=0;
+            //qDebug() << ui->UserCurve->count();
+            while(1)
+            {
+                if(ui->UserCurve->count()==0)
+                    break;
+                delete base[z].curva;
+                z++;
+                ui->UserCurve->removeItem(0);
+                reshow();
+            }
+            //qDebug()<<"После цикла ";
+            base.clear();
+            reshow();
+            okay=true;
+
+        }
+        if(ok==1)
+            ok=false;
+
 
 }
 
@@ -413,99 +516,48 @@ void MainWindow::on_actionOpen_file_triggered()
         {
             QFile file(fileName);
             QTextStream in(&file);
-            bool ok;
+            bool flag=false;
+            bool okay;
             if (!file.open(QIODevice::ReadOnly))
             {
                 QMessageBox::critical(this, tr("Error"), tr("Could not open file")); //Типо если файл нельзя читать то ошибко.
                 return;
             }
-            qDebug()<<fileName[fileName.length()-1];
             if(fileName[fileName.length()-1]=='t')//для тхт формата.
             {
-                qDebug()<<"Тут.";
-                class graph nov;
-                int i=-1;
-                while(1)
+
+                if(base.size()!=0)//Проверяем если есть прямые то выводим окно да\нет про удаление прямых иначе просто читаем.
                 {
-                    QString buf;
-                    buf=in.readLine();
-                    if(buf.isEmpty())
-                    {
-                        for(int j=0;j<base.size();j++)
-                        {
-                            base[j].curva->setSamples(base[j].tchk);
-                            reshow();
-                        }
-                        NameOfFile=fileName;
-                        QMessageBox::information(this,tr("Done"),tr("Успешно открыто"));
-                        break;
-                    }
-                    buf.toDouble(&ok);
-                    if(!ok)
-                    {
-
-                        nov.name=buf;
-                        buf=in.readLine();
-                        nov.red=buf.toInt();
-                        buf=in.readLine();
-                        nov.green=buf.toInt();
-                        buf=in.readLine();
-                        nov.blue=buf.toInt();
-                        buf=in.readLine();
-                        nov.pen=buf.toDouble();
-                        addCurve(nov);
-                        i++;
-                    }
-                    else
-                    {
-                        QString bufy;
-                        bufy=in.readLine();
-                        base[i].tchk.push_back(QPointF(buf.toDouble(),bufy.toDouble()));
-                    }
-
+                    CheckVector(okay);
+                    if(okay)
+                        ReadFromTxt(flag,file);
                 }
+                else
+                    ReadFromTxt(flag,file);
+
             }
             else if(fileName[fileName.length()-1]=='c')//для doc формата.
             {
-                qDebug()<<"Тут.";
-                class graph nov;
-                int i=-1;
-                while(1)
+                if(base.size()!=0)
                 {
-                    QString buf;
-                    buf=in.readLine();
-                    QStringList lst = buf.split("\t");
-                    buf.toDouble(&ok);
-                    if(lst.size()==5)
-                    {
-
-                        nov.name=lst.at(0);
-                        nov.red=lst.at(1).toInt();
-                        nov.green=lst.at(2).toInt();
-                        nov.blue=lst.at(3).toInt();
-                        nov.pen=lst.at(4).toDouble();
-                        addCurve(nov);
-                        i++;
-                    }
-                    else if(lst.size()==2)
-                    {   base[i].tchk.push_back(QPointF(lst.at(0).toDouble(),lst.at(1).toDouble()));
-
-                    }
-                    if(buf.isEmpty() && lst.size()<=1)
-                    {
-                        for(int j=0;j<base.size();j++)
-                        {
-                            base[j].curva->setSamples(base[j].tchk);
-                            reshow();
-                        }
-                        NameOfFile=fileName;
-                        QMessageBox::information(this,tr("Done"),tr("Успешно открыто"));
-                        break;
-                    }
+                    CheckVector(okay);
+                    if(okay)
+                        ReadFromDoc(flag,file);
                 }
+                else
+                    ReadFromDoc(flag,file);
             }
+            if(flag)
+            {
+                NameOfFile=fileName;
+                QMessageBox::information(this,tr("Done"),tr("Успешно открыто"));
+            }
+            else
+                QMessageBox::critical(this, tr("Error"), tr("Не открыто."));
             file.close();
         }
+        else
+            QMessageBox::critical(this, tr("Error"), tr("Указан пустой путь"));
 }
 
 void MainWindow::on_actionSave_File_as_triggered()
@@ -513,108 +565,57 @@ void MainWindow::on_actionSave_File_as_triggered()
     QString fileName = QFileDialog::getSaveFileName(this, tr("Save As"), "C://",".txt(*.txt);;.doc(*.doc)");
     if (fileName != "")
     {
-        bool flag=0;
-
+        bool flag=false;
         QFile file(fileName);
         if (file.open(QIODevice::WriteOnly))
-        {
-            QTextStream out(&file);
-            if(fileName[fileName.length()-1]=='t')
+        {            
+            if(fileName[fileName.length()-1]=='t')//определяем что txt
+                SaveToTxt(flag,file);
+            if(fileName[fileName.length()-1]=='c')//А это док
+                SaveToDoc(flag,file);
+            if(!flag)//Если запись не произошла
+                QMessageBox::critical(this, tr("Error"), tr("Изменения не сохранены.")); //Типо если файл нельзя читать то ошибко.
+            else//Записываем имя для повторного сохранения
             {
-                qDebug()<< "Это .txt" ;
-                flag=true;
-                for(int i=0; i<base.size(); i++)
-                {
-                    out << base[i].name << "\n" << base[i].red << "\n" << base[i].green << "\n" << base[i].blue << "\n" << base[i].pen << "\n";
-                    for(int j=0; j<base[i].tchk.size();j++)
-                        {
-                            out<<base[i].tchk[j].x()<<"\n"<<base[i].tchk[j].y()<<"\n";
-                            //return;
-                        }
-                }
+                NameOfFile=fileName;
+                QMessageBox::information(this, tr("Done"),tr("Сохранено в %1").arg(NameOfFile));
             }
-            if(fileName[fileName.length()-1]=='c')
-            {
-                qDebug()<<"Это .doc";
-                flag=true;
-                for(int i=0; i<base.size(); i++)
-                {
-                    out << base[i].name << "\t" << base[i].red << "\t" << base[i].green << "\t" << base[i].blue << "\t" << base[i].pen << "\n";
-                    for(int j=0; j<base[i].tchk.size();j++)
-                        {
-                            out<<base[i].tchk[j].x()<<"\t"<<base[i].tchk[j].y()<<"\n";
-                            //return;
-                        }
-                }
-
-            }
-            if(!flag)
-            {
-                qDebug()<<"С таким типо не работаем";
-
-            }
-            NameOfFile=fileName;
-            QMessageBox::information(this, tr("Done"),tr("Сохранено в %1").arg(NameOfFile));
             file.close();
         }
-
-
+        else
+        {
+            QMessageBox::critical(this, tr("Error"), tr("Could not open file")); //Нет прав на запись
+            return;
+        }
     }
     else
-    {
         QMessageBox::critical(this, tr("Error"), tr("Задан пустой путь до файла.")); //Типо если файл нельзя читать то ошибко.
-        return;
-    }
-
 }
 
 void MainWindow::on_actionSave_File_triggered()
 {
     if(!NameOfFile.isEmpty())
     {
-
+        bool flag=false;
         QFile file(NameOfFile);
         if (file.open(QIODevice::WriteOnly))
         {
-            QTextStream out(&file);
             if(NameOfFile[NameOfFile.length()-1]=='t')
-            {
-                qDebug()<< "Это .txt" ;
-
-                for(int i=0; i<base.size(); i++)
-                {
-                    out << base[i].name << "\n" << base[i].red << "\n" << base[i].green << "\n" << base[i].blue << "\n" << base[i].pen << "\n";
-                    for(int j=0; j<base[i].tchk.size();j++)
-                        {
-                            out<<base[i].tchk[j].x()<<"\n"<<base[i].tchk[j].y()<<"\n";
-                            //return;
-                        }
-                }
-            }
+                SaveToTxt(flag,file);
             if(NameOfFile[NameOfFile.length()-1]=='c')
-            {
-                qDebug()<<"Это .doc";
-                for(int i=0; i<base.size(); i++)
-                {
-                    out << base[i].name << "\t" << base[i].red << "\t" << base[i].green << "\t" << base[i].blue << "\t" << base[i].pen << "\n";
-                    for(int j=0; j<base[i].tchk.size();j++)
-                        {
-                            out<<base[i].tchk[j].x()<<"\t"<<base[i].tchk[j].y()<<"\n";
-                            //return;
-                        }
-                }
-
-            }
-            QMessageBox::information(this, tr("Done"),tr("Сохранено в %1").arg(NameOfFile));
+                SaveToDoc(flag,file);
+            if(flag)
+                QMessageBox::information(this, tr("Done"),tr("Сохранено в %1").arg(NameOfFile));
+            else
+                QMessageBox::critical(this, tr("Error"), tr("Сохранение не произошло.")); //Типо если файл нельзя читать то ошибко.
             file.close();
         }
     }
     else
-    {
         QMessageBox::critical(this, tr("Error"), tr("Нет имени файла")); //Типо если файл нельзя читать то ошибко.
-        return;
-    }
 }
+
+
 void MainWindow::AbleUseBlockFree()
 {
     int i;
@@ -645,6 +646,16 @@ void MainWindow::AddSimbols()
     QBrush( QColor(145,0,211) ), QPen( QColor(145,0,211), 1 ), QSize( 17, 17 ) );
 }
 
+void MainWindow::ChangeNewPoint()
+{
+    double x =ui->lineEditX->text().toDouble();
+    double y =ui->lineEditY->text().toDouble();
+    QPolygonF point;
+    point<<QPointF(x,y);
+    NewCurve->setSamples(point);
+    ui->Qwt_Widget->replot();
+}
+
 void MainWindow::addHelpCurve()
 {
     FreeCurve= new QwtPlotCurve;
@@ -656,7 +667,7 @@ void MainWindow::addHelpCurve()
     FreeCurve->attach( ui->Qwt_Widget );
     ActivCurve= new QwtPlotCurve;
     ActivCurve->setSymbol( ActivSimOreol);
-    ActivCurve->setPen(Qt::blue,4);
+    ActivCurve->setPen(Qt::blue,0);
     ActivCurve->setTitle("Activ");
     ActivCurve->setRenderHint
             ( QwtPlotItem::RenderAntialiased, true ); // сглаживание
@@ -669,6 +680,7 @@ void MainWindow::addHelpCurve()
             ( QwtPlotItem::RenderAntialiased, true ); // сглаживание
     NewCurve->attach( ui->Qwt_Widget );
 }
+
 void MainWindow::AbleUseBlockAdd()
 {
     int i;
@@ -681,4 +693,9 @@ void MainWindow::AbleUseBlockAdd()
         else(ui->add->setEnabled(i));
     ui->lineEditX->setEnabled(i);
     ui->lineEditY->setEnabled(i);
+}
+
+void MainWindow::on_checkActiv_clicked()
+{
+    reshow();
 }

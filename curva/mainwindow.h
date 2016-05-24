@@ -36,14 +36,13 @@ public:
     int red,green,blue;
     double pen;//толщина
     //предполагается что новый элемент tchk добавлен в конец
-    //поэтому двигаем с конца элемент до своего места
-    void MoveFromBack();
-    //тоже самое но с замещением точки если координата x
-    //одна и таже
+    //поэтому двигаем с конца элемент до своего мест
+    //с замещением точки если координата x
     void MoveFromBackWithout();
     //Возращает индекс точки ближайшей к передаваемым координатам
     int FindNear(double coordX,double coordY);
 };
+
 
 class MainWindow : public QMainWindow
 {
@@ -54,7 +53,6 @@ public:
 
 private Q_SLOTS:
     void click_on_canvas( const QPoint &pos );
-    void MoveNewSim(const QPoint &pos);
     void on_add_clicked();
     void on_free_clicked();
     void on_OneL_clicked();// pushbutton <
@@ -63,29 +61,37 @@ private Q_SLOTS:
     void on_TwoL_clicked();// pushbutton <<
     //Открыть окно добавления графика
     void on_actionNew_curve_triggered();
+
     //При измениении содержимого ввода провереем на заполненовсть
     //и делаем возможным или невозможным нажатее кнопки add
     void on_lineEditX_textChanged(const QString &arg1);
     void on_lineEditY_textChanged(const QString &arg1);
     void on_UserCurve_currentIndexChanged(int index);
+
     void on_actionDelete_curve_triggered();
+
     void on_actionOpen_file_triggered();
+
     void on_actionSave_File_as_triggered();
+
     void on_actionSave_File_triggered();
+    //при клик по checkbox
+    void on_checkActiv_clicked();
+
 private:
-    void SaveToTxt();
+    void SaveToTxt(bool &flag, QFile &file);
+    void SaveToDoc(bool &flag, QFile &file);
+    void ReadFromTxt(bool &flag, QFile &file);
+    void ReadFromDoc(bool &flag, QFile &file);
+    void CheckVector(bool &okay);
     QVector<graph> base;//База с прямыми пользователя
     Ui::MainWindow *ui;
     MyNewCurve *litwin;
     MyDeleteCurve *DelWin;
     //Добавить имя файла для кнопки "сохранить"
     QString NameOfFile;
-    int free_index;//точка для ->
-    /*Прямая состоящая из одной точки,которая точно
-     *есть у пользователя, используемая для отображаения
-     * на графике выделенной для удаления точки под
-     * free_index номером
-     */
+    int free_index;//индекс удаляемой точки в base[index].tchk
+    //символы и кривые для подсветки,удаления и последнего клика
     QwtSymbol *ActivSimOreol,*FreeSimOreol,*NewSim;
     QwtPlotCurve *FreeCurve;
     QwtPlotCurve *NewCurve;
@@ -95,18 +101,18 @@ private:
     void addHelpCurve();
     void addPlot();//поле графика
     void addPlotGrid();//сетка
-    //void addfreeCurve();
     void addCurve(graph &buf);
-    //Только та что в comandBox
+    //Рисует все прямые
     void reshow();
     void enableMagnifier();
     void enableMovingOnPlot();
     //переводит координаты клика в полле ввода
-    //контроль доступности работы с добавлением
+    void enablePicker();
     void AbleUseBlockAdd();
     //а это для удаления
     void AbleUseBlockFree();
-    void enablePicker();
     void ChangeNewPoint();
 };
+
+
 #endif // MAINWINDOW_H
