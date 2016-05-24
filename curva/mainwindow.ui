@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <layout class="QGridLayout" name="gridLayout">
+   <layout class="QGridLayout" name="gridLayout_2">
     <item row="0" column="0">
      <widget class="QwtPlot" name="Qwt_Widget" native="true">
       <property name="minimumSize">
@@ -26,8 +26,8 @@
      </widget>
     </item>
     <item row="0" column="1">
-     <layout class="QVBoxLayout" name="verticalLayout">
-      <item>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="0">
        <widget class="QComboBox" name="UserCurve">
         <property name="maximumSize">
          <size>
@@ -37,7 +37,7 @@
         </property>
        </widget>
       </item>
-      <item>
+      <item row="1" column="0">
        <layout class="QHBoxLayout" name="horizontalLayout_2">
         <item>
          <widget class="QLabel" name="labelX">
@@ -64,7 +64,7 @@
         </item>
        </layout>
       </item>
-      <item>
+      <item row="2" column="0">
        <layout class="QHBoxLayout" name="horizontalLayout_3">
         <item>
          <widget class="QLabel" name="labelY">
@@ -91,7 +91,7 @@
         </item>
        </layout>
       </item>
-      <item>
+      <item row="3" column="0">
        <widget class="QPushButton" name="add">
         <property name="maximumSize">
          <size>
@@ -104,7 +104,7 @@
         </property>
        </widget>
       </item>
-      <item>
+      <item row="4" column="0">
        <widget class="QPushButton" name="free">
         <property name="maximumSize">
          <size>
@@ -117,7 +117,7 @@
         </property>
        </widget>
       </item>
-      <item>
+      <item row="5" column="0">
        <layout class="QHBoxLayout" name="horizontalLayout">
         <item>
          <widget class="QPushButton" name="TwoL">
@@ -197,7 +197,7 @@
         </item>
        </layout>
       </item>
-      <item>
+      <item row="6" column="0">
        <spacer name="verticalSpacer">
         <property name="orientation">
          <enum>Qt::Vertical</enum>
@@ -210,23 +210,16 @@
         </property>
        </spacer>
       </item>
-      <item>
+      <item row="7" column="0">
        <layout class="QHBoxLayout" name="horizontalLayout_4">
         <item>
-         <spacer name="horizontalSpacer">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
+         <widget class="QCheckBox" name="checkActiv">
+          <property name="maximumSize">
            <size>
-            <width>37</width>
-            <height>17</height>
+            <width>143</width>
+            <height>22</height>
            </size>
           </property>
-         </spacer>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="checkActiv">
           <property name="text">
            <string>Подсветка Activ</string>
           </property>
