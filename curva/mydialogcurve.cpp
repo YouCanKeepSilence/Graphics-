@@ -6,6 +6,7 @@ MyNewCurve::MyNewCurve(class graph &nov,QWidget *parent)
     text=new QLabel("&Enter");
     name=new QLineEdit;
     text->setBuddy(name);
+    name->setValidator( new QRegExpValidator( QRegExp( "[A-Za-z0-9 ]{1,50}" ) ) );
     Lname=new QHBoxLayout;
     Lname->addWidget(text);
     Lname->addWidget(name);
@@ -83,8 +84,8 @@ void MyNewCurve::TextChanged(QString str)
 MyDeleteCurve::MyDeleteCurve(QWidget *parent, QString name)
 {
 
-    text=new QLabel("Удалить кривую : "+ name +"?");
-
+    text=new QLabel("Удалить кривую : "+ name +" ?");
+    this->setWindowTitle("Delete curve");
     ok=new QPushButton("Удалить");
     cancel=new QPushButton("Отмена");
     Lone=new QHBoxLayout;
