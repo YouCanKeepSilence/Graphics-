@@ -341,7 +341,8 @@ void MainWindow::on_actionDelete_curve_triggered()
 
 int graph::FindNear(double coordX,double coordY)
 {
-    int i,index=-1,mindlin=-1;
+    int i,index=-1;
+    double mindlin=-1.0;
     int bufdlin;
     if(tchk.size()>0)
     {
