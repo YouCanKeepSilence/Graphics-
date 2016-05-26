@@ -379,19 +379,37 @@ void MainWindow::SaveToTxt(bool &flag, QFile &file)
     flag=true;
 
 }
+void MainWindow::AppendToTxt(bool &flag, QFile &file)
+{
+    int i = ui->UserCurve->currentIndex();
+    QTextStream out(&file);
+    out << base[i].name << "\n" << base[i].red << "\n" << base[i].green << "\n" << base[i].blue << "\n" << base[i].pen << "\n";
+    for(int j=0; j<base[i].tchk.size();j++)
+        out<<base[i].tchk[j].x()<<"\n"<<base[i].tchk[j].y()<<"\n";
+    flag=true;
+}
+
 void MainWindow::SaveToDoc(bool &flag, QFile &file)
 {
-    //qDebug()<<"Это .doc";
     QTextStream out(&file);
     for(int i=0; i<base.size(); i++)
     {
         out << base[i].name << "\t" << base[i].red << "\t" << base[i].green << "\t" << base[i].blue << "\t" << base[i].pen << "\n";
         for(int j=0; j<base[i].tchk.size();j++)
-            {
-                out<<base[i].tchk[j].x()<<"\t"<<base[i].tchk[j].y()<<"\n";
-                //return;
-            }
+            out<<base[i].tchk[j].x()<<"\t"<<base[i].tchk[j].y()<<"\n";
     }
+    flag=true;
+}
+void MainWindow::AppendToDoc(bool &flag, QFile &file)
+{
+    int i=ui->UserCurve->currentIndex();
+    QTextStream out(&file);
+    out << base[i].name << "\t" << base[i].red << "\t" << base[i].green << "\t" << base[i].blue << "\t" << base[i].pen << "\n";
+    for(int j=0; j<base[i].tchk.size();j++)
+        {
+            out<<base[i].tchk[j].x()<<"\t"<<base[i].tchk[j].y()<<"\n";
+            //return;
+        }
     flag=true;
 }
 
@@ -440,12 +458,74 @@ void MainWindow::ReadFromTxt(bool &flag, QFile &file)
 
     }
 }
+void MainWindow::ReadOneFromTxt(bool &flag, QFile &file)
+{
+    QTextStream in(&file);
+    class graph nov;
+    QString buf;
+    buf=in.readLine();
+    nov.name=buf;
+    buf=in.readLine();
+    nov.red=buf.toInt();
+    buf=in.readLine();
+    nov.green=buf.toInt();
+    buf=in.readLine();
+    nov.blue=buf.toInt();
+    buf=in.readLine();
+    nov.pen=buf.toDouble();
+    addCurve(nov);
+    bool ok;
+    while(1)
+    {
+        buf=in.readLine();
+        buf.toDouble(&ok);
+        if(buf.isEmpty() || ok==false)
+            break;
+        QString bufy;
+        bufy=in.readLine();
+        qDebug()<<ui->UserCurve->currentIndex();
+        qDebug()<<base.size();
+        base[base.size()-1].tchk.push_back(QPointF(buf.toDouble(),bufy.toDouble()));
+        reshow();
+
+    }
+    base[base.size()-1].curva->setSamples(base[base.size()-1].tchk);
+    flag=true;
+}
+void MainWindow::ReadOneFromDoc(bool &flag, QFile &file)
+{
+    class graph nov;
+    QTextStream in(&file);
+    QString buf;
+    buf=in.readLine();
+    QStringList lst = buf.split("\t");
+    nov.name=lst.at(0);
+    nov.red=lst.at(1).toInt();
+    nov.green=lst.at(2).toInt();
+    nov.blue=lst.at(3).toInt();
+    nov.pen=lst.at(4).toDouble();
+    addCurve(nov);
+    while(1)
+    {
+        buf=in.readLine();
+        QStringList lst1;
+        lst1=buf.split("\t");
+        if((buf.isEmpty() && lst1.size()<=1) || lst1.size()==5)
+            break;
+
+        base[base.size()-1].tchk.push_back(QPointF(lst1.at(0).toDouble(),lst1.at(1).toDouble()));
+
+    }
+    base[base.size()-1].curva->setSamples(base[base.size()-1].tchk);
+    reshow();
+    flag=true;
+}
 
 void MainWindow::ReadFromDoc(bool &flag, QFile &file)
 {
     class graph nov;
-    int i=-1;
     QTextStream in(&file);
+    int i=-1;
     while(1)
     {
         QString buf;
@@ -612,4 +692,97 @@ void MainWindow::on_actionSave_File_triggered()
     }
     else
         QMessageBox::critical(this, tr("Error"), tr("Нет имени файла")); //Типо если файл нельзя читать то ошибко.
+}
+
+void MainWindow::on_actionOpen_one_curve_triggered()
+{
+    QString fileName = QFileDialog::getOpenFileName(this, tr("Open File"), "", tr(".txt (*.txt);; .doc (*.doc)"));//Сюда дописывать форматы
+
+        if (fileName != "")
+        {
+            QFile file(fileName);
+            QTextStream in(&file);
+            bool flag=false;
+            bool okay;
+            if (!file.open(QIODevice::ReadOnly))
+            {
+                QMessageBox::critical(this, tr("Error"), tr("Could not open file")); //Типо если файл нельзя читать то ошибко.
+                return;
+            }
+            if(fileName[fileName.length()-1]=='t')//для тхт формата.
+                ReadOneFromTxt(flag,file);
+            else if(fileName[fileName.length()-1]=='c')//для doc формата.
+                ReadOneFromDoc(flag,file);
+            if(flag)
+            {
+                NameOfFile=fileName;
+                QMessageBox::information(this,tr("Done"),tr("Успешно открыто"));
+            }
+            else
+                QMessageBox::critical(this, tr("Error"), tr("Не открыто."));
+            file.close();
+        }
+        else
+            QMessageBox::critical(this, tr("Error"), tr("Указан пустой путь"));
+
+}
+
+void MainWindow::on_actionSave_current_curve_triggered()
+{
+    if(!NameOfFile.isEmpty())
+    {
+        bool flag=false;
+        QFile file(NameOfFile);
+        if (file.open(QIODevice::Append))
+        {
+            if(NameOfFile[NameOfFile.length()-1]=='t')
+               AppendToTxt(flag,file);
+            if(NameOfFile[NameOfFile.length()-1]=='c')
+               AppendToDoc(flag,file);
+            if(flag)
+                QMessageBox::information(this, tr("Done"),tr("Прямая %1 добавлена в %2").arg((base[ui->UserCurve->currentIndex()].name),NameOfFile));
+            else
+                QMessageBox::critical(this, tr("Error"), tr("Сохранение не произошло.")); //Типо если файл нельзя читать то ошибко.
+            file.close();
+        }
+    }
+    else
+        QMessageBox::critical(this, tr("Error"), tr("Нет имени файла")); //Типо если файл нельзя читать то ошибко.
+
+}
+
+void MainWindow::on_actionSave_current_curve_as_triggered()
+{
+    QString fileName = QFileDialog::getSaveFileName(this, tr("Save As"), "C://",".txt(*.txt);;.doc(*.doc)");
+    if (fileName != "")
+    {
+
+        bool flag=false;
+        QFile file(fileName);
+        if(file.exists())
+            file.open(QIODevice::Append);
+        if (file.open(QIODevice::WriteOnly)||file.isOpen())
+        {
+            if(fileName[fileName.length()-1]=='t')//определяем что txt
+                AppendToTxt(flag,file);
+            if(fileName[fileName.length()-1]=='c')//А это док
+                AppendToDoc(flag,file);
+            if(!flag)//Если запись не произошла
+                QMessageBox::critical(this, tr("Error"), tr("Изменения не сохранены.")); //Типо если файл нельзя читать то ошибко.
+            else//Записываем имя для повторного сохранения
+            {
+                NameOfFile=fileName;
+                QMessageBox::information(this, tr("Done"),tr("Прямая %1 сохранена в %2").arg((base[ui->UserCurve->currentIndex()].name),NameOfFile));
+            }
+            file.close();
+        }
+        else
+        {
+            QMessageBox::critical(this, tr("Error"), tr("Could not open file")); //Нет прав на запись
+            return;
+        }
+    }
+    else
+        QMessageBox::critical(this, tr("Error"), tr("Задан пустой путь до файла.")); //Типо если файл нельзя читать то ошибко.
+
 }

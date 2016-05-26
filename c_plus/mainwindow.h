@@ -42,7 +42,6 @@ class MyNewCurve;
 class MyDeleteCurve;
 /*!
  * \brief The graph class
- * ----------------------------------
  *
  * Класс , содержащий все данные об одной прямой
  */
@@ -87,8 +86,6 @@ public:
 
 /*!
  * \brief The MainWindow class
- * --------------------------------------
- *
  *
  * Класс главного окна через которое происходит управление программой и в котором рисуются графики
  * Содержит так же функции чтения и записи файлов, разборщик форматов и т.д.
@@ -103,9 +100,9 @@ public:
 private Q_SLOTS:
     ///Возвращает координаты клика по сетке
     void click_on_canvas( const QPoint &pos );
-    ///Нажатие на кнопку добавить
+    ///Добавить точку на активный график
     void on_add_clicked();
-    ///Нажатие на кнопку удалить
+    ///Удаление точки с активного графика
     void on_free_clicked();
     ///Сдвиг точки для удаления влево по графику на 1
     void on_OneL_clicked();// pushbutton <
@@ -135,11 +132,19 @@ private Q_SLOTS:
     void on_actionSave_File_as_triggered();
     ///Нажатие Menu->Save
     void on_actionSave_File_triggered();
+    ///Добавляет одну прямую из начала выбранного файла
+    void on_actionOpen_one_curve_triggered();
+    ///Сохраняет одну прямую в конце текущего активного файла
+    void on_actionSave_current_curve_triggered();
+    /*! brief Сохраняет одну активную прямую в конец выбранного файла
+     *
+     * \warning Не обращайте внимания на вопрос о замене файла, ничего не будет заменено.
+    */
+    void on_actionSave_current_curve_as_triggered();
 
 private:
     /*!
      * \brief SaveToTxt
-     * ----------------------------
      *
      * Сохраняет в .txt формат
      * \warning Важен определнный порядок расположения данных , а именно : \n
@@ -155,8 +160,23 @@ private:
      */
     void SaveToTxt(bool &flag, QFile &file);
     /*!
+     * \brief AppendToTxt
+     *
+     * Записывает текущую прямую в конец уже использованно файла
+     * \param flag показатель записи 1 - записано 0 -нет
+     * \param file ссылка на файл
+     */
+    void AppendToTxt(bool &flag, QFile &file);
+    /*!
+     * \brief AppendToDoc
+     *
+     * Записывает текущую прямую в конец уже использованно файла
+     * \param flag показатель записи 1 - записано 0 -нет
+     * \param file ссылка на файл
+     */
+    void AppendToDoc(bool &flag, QFile &file);
+    /*!
      * \brief SaveToDoc
-     * ----------------------
      *
      * Сохраняет в .doc формат
      * \warning Важен определенный формат расположения , а именно : \n
@@ -167,8 +187,16 @@ private:
      */
     void SaveToDoc(bool &flag, QFile &file);
     /*!
+     * \brief ReadOneFromTxt
+     *
+     * Читает ОДНУ ПРЯМУЮ из .txt формата
+     * \warning Читает ПЕРВУЮ прямую
+     * \param flag удачно ли было проведено чтение 1 - да 0 -нет
+     * \param file ссылка на файл
+     */
+    void ReadOneFromTxt(bool &flag, QFile &file);
+    /*!
      * \brief ReadFromTxt
-     * ----------------------
      *
      * Читает список прямых из .txt формата
      * \warning Прямые должны быть оформлены соответственно.\n
@@ -178,8 +206,16 @@ private:
      */
     void ReadFromTxt(bool &flag, QFile &file);
     /*!
+     * \brief ReadOneFromDoc
+     *
+     * Читает ОДНУ ПРЯМУЮ из .doc формата
+     * \warning Читает ПЕРВУЮ прямую
+     * \param flag удачно ли было проведено чтение 1 - да 0 -нет
+     * \param file ссылка на файл
+     */
+    void ReadOneFromDoc(bool &flag, QFile &file);
+    /*!
      * \brief ReadFromDoc
-     * --------------------
      *
      * Читает список прямых из .doc формата
      * \warning Прямые должны быть оформлены соответственно.\n
@@ -188,8 +224,8 @@ private:
      * \param file ссылка на файл
      */
     void ReadFromDoc(bool &flag, QFile &file);
-    ///Проверяет есть ли существующие прямые при открытии файла
-    /// Если есть то предлагает их удалить и удаляет иначе открытие не произойдет
+
+    ///Проверяет есть ли существующие прямые при открытии файла.\n Если есть то предлагает их удалить и удаляет иначе открытие не произойдет
     void CheckVector(bool &okay);
     ///Содержит все прямые
     QVector<graph> base;//База с прямыми пользователя
@@ -213,7 +249,6 @@ private:
     void addfreeCurve();
     /*!
      * \brief addCurve
-     * --------------------
      *
      * Добавляет новою прямую в вектор из прямых
      * \param buf ссылка по которой находится данные о прямой
