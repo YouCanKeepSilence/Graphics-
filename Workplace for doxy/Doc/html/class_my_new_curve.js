@@ -1,0 +1,26 @@
+var class_my_new_curve =
+[
+    [ "MyNewCurve", "class_my_new_curve.html#a4bcbd4aa358bd6a043e9fc1ebffe7620", null ],
+    [ "OkClicked", "class_my_new_curve.html#a220756368617b53ca4c70237ae018a08", null ],
+    [ "TextChanged", "class_my_new_curve.html#ad2f0b68e3ac43c6046261ad41059edae", null ],
+    [ "BoxBlue", "class_my_new_curve.html#adb5d040a4f9451af0d84e69761cc8905", null ],
+    [ "BoxGreen", "class_my_new_curve.html#abf842ae2344dc6ba03a57aa4f200b970", null ],
+    [ "BoxRed", "class_my_new_curve.html#a37b211c94b00a2928c96f95157839deb", null ],
+    [ "BoxThickness", "class_my_new_curve.html#a3a82c01b232e4987874a140641bfae6a", null ],
+    [ "cancel", "class_my_new_curve.html#aaa33e47f0bec8d508bc21232b4f40c54", null ],
+    [ "curva", "class_my_new_curve.html#adc9b0d35a6dd14fbbb9dafb7d216d09e", null ],
+    [ "Final", "class_my_new_curve.html#a434922e9f8ef0c203cc5b092177b3d7f", null ],
+    [ "LBlue", "class_my_new_curve.html#a2d94abe7d24d0771c89b088eebd67746", null ],
+    [ "LGreen", "class_my_new_curve.html#a1e5abceba7257c0b9ecead84cfd9cc65", null ],
+    [ "Lname", "class_my_new_curve.html#ae54f797a1a87a88451e123b6ec224138", null ],
+    [ "LPushButton", "class_my_new_curve.html#aba3c9aa3c54ae37cbe0534850e50d127", null ],
+    [ "LRed", "class_my_new_curve.html#a5a9ee38f646cb061889c01e7da30df4b", null ],
+    [ "LThickness", "class_my_new_curve.html#ae945f7f28e50dfb0d5f8ec31d2d664db", null ],
+    [ "name", "class_my_new_curve.html#a6b2024b3ff171df55727ddc1f14e650c", null ],
+    [ "ok", "class_my_new_curve.html#aafb32d95590f926825a281f716399b60", null ],
+    [ "text", "class_my_new_curve.html#afe5dcbf9eb1e8a508c62c47b1f1d8731", null ],
+    [ "TextBlue", "class_my_new_curve.html#aba072b80d92992948ba631f26106d0ba", null ],
+    [ "TextGreen", "class_my_new_curve.html#ae1c09f3bf69cfa8f90837107aeac3906", null ],
+    [ "TextRed", "class_my_new_curve.html#afcb0f8300093909c40d21b6d62cff50d", null ],
+    [ "TextThickness", "class_my_new_curve.html#acfe31b2fcdc46988b9dd1461d52e66b4", null ]
+];

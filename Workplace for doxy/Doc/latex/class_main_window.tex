@@ -1,0 +1,936 @@
+\hypertarget{class_main_window}{}\section{Класс Main\+Window}
+\label{class_main_window}\index{Main\+Window@{Main\+Window}}
+
+
+The \hyperlink{class_main_window}{Main\+Window} class.  
+
+
+
+
+{\ttfamily \#include $<$mainwindow.\+h$>$}
+
+
+
+Граф наследования\+:Main\+Window\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{class_main_window__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Граф связей класса Main\+Window\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{class_main_window__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Main\+Window} (Q\+Widget $\ast$parent=0)\hypertarget{class_main_window_a8b244be8b7b7db1b08de2a2acb9409db}{}\label{class_main_window_a8b244be8b7b7db1b08de2a2acb9409db}
+
+\end{DoxyCompactItemize}
+\subsection*{Закрытые слоты}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_main_window_aa518cb3e5c52da2ccb6b886d6e09339d}{click\+\_\+on\+\_\+canvas} (const Q\+Point \&pos)\hypertarget{class_main_window_aa518cb3e5c52da2ccb6b886d6e09339d}{}\label{class_main_window_aa518cb3e5c52da2ccb6b886d6e09339d}
+
+\begin{DoxyCompactList}\small\item\em Возвращает координаты клика по сетке \end{DoxyCompactList}\item 
+void \hyperlink{class_main_window_ac5d7fe3c822551a9525b83fb6b3b99d3}{on\+\_\+add\+\_\+clicked} ()\hypertarget{class_main_window_ac5d7fe3c822551a9525b83fb6b3b99d3}{}\label{class_main_window_ac5d7fe3c822551a9525b83fb6b3b99d3}
+
+\begin{DoxyCompactList}\small\item\em Добавить точку на активный график \end{DoxyCompactList}\item 
+void \hyperlink{class_main_window_ad7f5879e59277f275c452d99d2d1e923}{on\+\_\+free\+\_\+clicked} ()\hypertarget{class_main_window_ad7f5879e59277f275c452d99d2d1e923}{}\label{class_main_window_ad7f5879e59277f275c452d99d2d1e923}
+
+\begin{DoxyCompactList}\small\item\em Удаление точки с активного графика \end{DoxyCompactList}\item 
+void \hyperlink{class_main_window_ac1cc49b084dceb4e44b973819b8bc9cc}{on\+\_\+\+One\+L\+\_\+clicked} ()\hypertarget{class_main_window_ac1cc49b084dceb4e44b973819b8bc9cc}{}\label{class_main_window_ac1cc49b084dceb4e44b973819b8bc9cc}
+
+\begin{DoxyCompactList}\small\item\em Сдвиг точки для удаления влево по графику на 1. \end{DoxyCompactList}\item 
+void \hyperlink{class_main_window_afa3f2fb370e2b3c9064880d9aa9a8d14}{on\+\_\+\+One\+R\+\_\+clicked} ()\hypertarget{class_main_window_afa3f2fb370e2b3c9064880d9aa9a8d14}{}\label{class_main_window_afa3f2fb370e2b3c9064880d9aa9a8d14}
+
+\begin{DoxyCompactList}\small\item\em Сдвиг точки для удаления вправо по графику на 1. \end{DoxyCompactList}\item 
+void \hyperlink{class_main_window_ac38bdf92edc1e6cbd07cced4497aa964}{on\+\_\+\+T\+Wo\+R\+\_\+clicked} ()\hypertarget{class_main_window_ac38bdf92edc1e6cbd07cced4497aa964}{}\label{class_main_window_ac38bdf92edc1e6cbd07cced4497aa964}
+
+\begin{DoxyCompactList}\small\item\em Сдвиг на 10 точек вправо \end{DoxyCompactList}\item 
+void \hyperlink{class_main_window_a3fd8329ca1b8ee5d2ac4da65ee5b6617}{on\+\_\+\+Two\+L\+\_\+clicked} ()\hypertarget{class_main_window_a3fd8329ca1b8ee5d2ac4da65ee5b6617}{}\label{class_main_window_a3fd8329ca1b8ee5d2ac4da65ee5b6617}
+
+\begin{DoxyCompactList}\small\item\em Свдиг на 10 точек влево \end{DoxyCompactList}\item 
+void \hyperlink{class_main_window_a39584a1d717e2430f7c8666071760335}{on\+\_\+action\+New\+\_\+curve\+\_\+triggered} ()\hypertarget{class_main_window_a39584a1d717e2430f7c8666071760335}{}\label{class_main_window_a39584a1d717e2430f7c8666071760335}
+
+\begin{DoxyCompactList}\small\item\em Нажатие Edit-\/$>$New Curve. \end{DoxyCompactList}\item 
+void \hyperlink{class_main_window_afa3811da5b85f09d356f9c417970fb5d}{on\+\_\+line\+Edit\+X\+\_\+text\+Changed} (const Q\+String \&arg1)\hypertarget{class_main_window_afa3811da5b85f09d356f9c417970fb5d}{}\label{class_main_window_afa3811da5b85f09d356f9c417970fb5d}
+
+\begin{DoxyCompactList}\small\item\em Контроль непустого поля для добавления точки \end{DoxyCompactList}\item 
+void \hyperlink{class_main_window_a5f00712967779082bc1e5099f139c0c4}{on\+\_\+line\+Edit\+Y\+\_\+text\+Changed} (const Q\+String \&arg1)\hypertarget{class_main_window_a5f00712967779082bc1e5099f139c0c4}{}\label{class_main_window_a5f00712967779082bc1e5099f139c0c4}
+
+\begin{DoxyCompactList}\small\item\em Контроль непустого поля для добавления точки \end{DoxyCompactList}\item 
+void \hyperlink{class_main_window_abe5494f1256abd53569e546236078ead}{on\+\_\+\+User\+Curve\+\_\+current\+Index\+Changed} (int index)\hypertarget{class_main_window_abe5494f1256abd53569e546236078ead}{}\label{class_main_window_abe5494f1256abd53569e546236078ead}
+
+\begin{DoxyCompactList}\small\item\em Получения индекса активной прямой \end{DoxyCompactList}\item 
+void \hyperlink{class_main_window_a6107fba5e2e27b6234ebcf703cf305b1}{on\+\_\+action\+Delete\+\_\+curve\+\_\+triggered} ()\hypertarget{class_main_window_a6107fba5e2e27b6234ebcf703cf305b1}{}\label{class_main_window_a6107fba5e2e27b6234ebcf703cf305b1}
+
+\begin{DoxyCompactList}\small\item\em Нажатие Edit-\/$>$Delete Curve. \end{DoxyCompactList}\item 
+void \hyperlink{class_main_window_ab4b13cfa6d7b65dfdea897e7e8425874}{on\+\_\+action\+Open\+\_\+file\+\_\+triggered} ()\hypertarget{class_main_window_ab4b13cfa6d7b65dfdea897e7e8425874}{}\label{class_main_window_ab4b13cfa6d7b65dfdea897e7e8425874}
+
+\begin{DoxyCompactList}\small\item\em Нажатие Menu-\/$>$Open. \end{DoxyCompactList}\item 
+void \hyperlink{class_main_window_ad0e823ebb5284bffb3eb92f95d6b0c79}{on\+\_\+action\+Save\+\_\+\+File\+\_\+as\+\_\+triggered} ()\hypertarget{class_main_window_ad0e823ebb5284bffb3eb92f95d6b0c79}{}\label{class_main_window_ad0e823ebb5284bffb3eb92f95d6b0c79}
+
+\begin{DoxyCompactList}\small\item\em Нажатие Menu-\/$>$Save as. \end{DoxyCompactList}\item 
+void \hyperlink{class_main_window_ab389ed5a61b95186643e6966ba965d5f}{on\+\_\+action\+Save\+\_\+\+File\+\_\+triggered} ()\hypertarget{class_main_window_ab389ed5a61b95186643e6966ba965d5f}{}\label{class_main_window_ab389ed5a61b95186643e6966ba965d5f}
+
+\begin{DoxyCompactList}\small\item\em Нажатие Menu-\/$>$Save. \end{DoxyCompactList}\item 
+void \hyperlink{class_main_window_a0c0436c2de50da0d7cf5b26242a694ad}{on\+\_\+action\+Open\+\_\+one\+\_\+curve\+\_\+triggered} ()\hypertarget{class_main_window_a0c0436c2de50da0d7cf5b26242a694ad}{}\label{class_main_window_a0c0436c2de50da0d7cf5b26242a694ad}
+
+\begin{DoxyCompactList}\small\item\em Добавляет одну прямую из начала выбранного файла \end{DoxyCompactList}\item 
+void \hyperlink{class_main_window_adb1ff161c75d24a3aa5d5aa71e3cbb91}{on\+\_\+action\+Save\+\_\+current\+\_\+curve\+\_\+triggered} ()\hypertarget{class_main_window_adb1ff161c75d24a3aa5d5aa71e3cbb91}{}\label{class_main_window_adb1ff161c75d24a3aa5d5aa71e3cbb91}
+
+\begin{DoxyCompactList}\small\item\em Сохраняет одну прямую в конце текущего активного файла \end{DoxyCompactList}\item 
+void \hyperlink{class_main_window_ad0e13c15f3efed36489c68de4bb6434f}{on\+\_\+action\+Save\+\_\+current\+\_\+curve\+\_\+as\+\_\+triggered} ()
+\end{DoxyCompactItemize}
+\subsection*{Закрытые члены}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_main_window_a64f7c1216a075bf75d3c2e7fb88fd371}{Save\+To\+Txt} (bool \&flag, Q\+File \&file)
+\begin{DoxyCompactList}\small\item\em Save\+To\+Txt. \end{DoxyCompactList}\item 
+void \hyperlink{class_main_window_ada72ba7c0365cd69528339a0298941d2}{Append\+To\+Txt} (bool \&flag, Q\+File \&file)
+\begin{DoxyCompactList}\small\item\em Append\+To\+Txt. \end{DoxyCompactList}\item 
+void \hyperlink{class_main_window_ab31b6edb24cdb7744f4ab4db3300b29c}{Append\+To\+Doc} (bool \&flag, Q\+File \&file)
+\begin{DoxyCompactList}\small\item\em Append\+To\+Doc. \end{DoxyCompactList}\item 
+void \hyperlink{class_main_window_aa84cdb1ab42ba6621bf43fc2d126bcf4}{Save\+To\+Doc} (bool \&flag, Q\+File \&file)
+\begin{DoxyCompactList}\small\item\em Save\+To\+Doc. \end{DoxyCompactList}\item 
+void \hyperlink{class_main_window_a50c6d26a5751b97d502334de0c43fcef}{Read\+One\+From\+Txt} (bool \&flag, Q\+File \&file)
+\begin{DoxyCompactList}\small\item\em Read\+One\+From\+Txt. \end{DoxyCompactList}\item 
+void \hyperlink{class_main_window_ac280af7b364789fa7b6e2274fb8a9e2a}{Read\+From\+Txt} (bool \&flag, Q\+File \&file)
+\begin{DoxyCompactList}\small\item\em Read\+From\+Txt. \end{DoxyCompactList}\item 
+void \hyperlink{class_main_window_a72ec1547630d1af06f61888bb623fad6}{Read\+One\+From\+Doc} (bool \&flag, Q\+File \&file)
+\begin{DoxyCompactList}\small\item\em Read\+One\+From\+Doc. \end{DoxyCompactList}\item 
+void \hyperlink{class_main_window_a219bfb3f9f9946118aaebb0e88f64315}{Read\+From\+Doc} (bool \&flag, Q\+File \&file)
+\begin{DoxyCompactList}\small\item\em Read\+From\+Doc. \end{DoxyCompactList}\item 
+void \hyperlink{class_main_window_a236bdec985319b80062b14e4e53bf2a0}{Check\+Vector} (bool \&okay)\hypertarget{class_main_window_a236bdec985319b80062b14e4e53bf2a0}{}\label{class_main_window_a236bdec985319b80062b14e4e53bf2a0}
+
+\begin{DoxyCompactList}\small\item\em Проверяет есть ли существующие прямые при открытии файла.~\newline
+ Если есть то предлагает их удалить и удаляет иначе открытие не произойдет \end{DoxyCompactList}\item 
+void \hyperlink{class_main_window_a77cab55db6f0a5b74c9f7d3da47e006f}{add\+Plot} ()\hypertarget{class_main_window_a77cab55db6f0a5b74c9f7d3da47e006f}{}\label{class_main_window_a77cab55db6f0a5b74c9f7d3da47e006f}
+
+\begin{DoxyCompactList}\small\item\em Добавляет график \end{DoxyCompactList}\item 
+void \hyperlink{class_main_window_abb03c14d2a968e50a8d069b73f27efb0}{add\+Plot\+Grid} ()\hypertarget{class_main_window_abb03c14d2a968e50a8d069b73f27efb0}{}\label{class_main_window_abb03c14d2a968e50a8d069b73f27efb0}
+
+\begin{DoxyCompactList}\small\item\em Добавляет сетку \end{DoxyCompactList}\item 
+void \hyperlink{class_main_window_a3d6f33a054126933c27adefd9ea329e0}{addfree\+Curve} ()\hypertarget{class_main_window_a3d6f33a054126933c27adefd9ea329e0}{}\label{class_main_window_a3d6f33a054126933c27adefd9ea329e0}
+
+\begin{DoxyCompactList}\small\item\em Добавление прямой из одной точки для подсветки активно \end{DoxyCompactList}\item 
+void \hyperlink{class_main_window_aa5c0998b1192bfab3ff83b02c42b2c67}{add\+Curve} (\hyperlink{classgraph}{graph} \&buf)
+\begin{DoxyCompactList}\small\item\em add\+Curve \end{DoxyCompactList}\item 
+void \hyperlink{class_main_window_a24985964bdf5f59467dcc99749e06bdd}{reshow} ()\hypertarget{class_main_window_a24985964bdf5f59467dcc99749e06bdd}{}\label{class_main_window_a24985964bdf5f59467dcc99749e06bdd}
+
+\begin{DoxyCompactList}\small\item\em Используется для перезагрузки поля графиков, т.\+е. для отрисовки новых прямых \end{DoxyCompactList}\item 
+void \hyperlink{class_main_window_afdb82afd72e8643eddf6f4c0266489e8}{enable\+Magnifier} ()\hypertarget{class_main_window_afdb82afd72e8643eddf6f4c0266489e8}{}\label{class_main_window_afdb82afd72e8643eddf6f4c0266489e8}
+
+\begin{DoxyCompactList}\small\item\em Активация приближения по колесику мыши \end{DoxyCompactList}\item 
+void \hyperlink{class_main_window_ad04c0aea2156c338a745b02ac456343b}{enable\+Moving\+On\+Plot} ()\hypertarget{class_main_window_ad04c0aea2156c338a745b02ac456343b}{}\label{class_main_window_ad04c0aea2156c338a745b02ac456343b}
+
+\begin{DoxyCompactList}\small\item\em Активирует передвижение по сетке правой кнопкой мыши \end{DoxyCompactList}\item 
+void \hyperlink{class_main_window_ac532634c85e6e35dfbd7c5d1c1520e62}{enable\+Picker} ()\hypertarget{class_main_window_ac532634c85e6e35dfbd7c5d1c1520e62}{}\label{class_main_window_ac532634c85e6e35dfbd7c5d1c1520e62}
+
+\begin{DoxyCompactList}\small\item\em переводит координаты клика в полле ввода \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Закрытые данные}
+\begin{DoxyCompactItemize}
+\item 
+Q\+Vector$<$ \hyperlink{classgraph}{graph} $>$ \hyperlink{class_main_window_a3413d4508f4981518b1b8ebf3b29121e}{base}\hypertarget{class_main_window_a3413d4508f4981518b1b8ebf3b29121e}{}\label{class_main_window_a3413d4508f4981518b1b8ebf3b29121e}
+
+\begin{DoxyCompactList}\small\item\em Содержит все прямые \end{DoxyCompactList}\item 
+Ui\+::\+Main\+Window $\ast$ \hyperlink{class_main_window_a35466a70ed47252a0191168126a352a5}{ui}\hypertarget{class_main_window_a35466a70ed47252a0191168126a352a5}{}\label{class_main_window_a35466a70ed47252a0191168126a352a5}
+
+\begin{DoxyCompactList}\small\item\em Указатель на форму главного окна \end{DoxyCompactList}\item 
+\hyperlink{class_my_new_curve}{My\+New\+Curve} $\ast$ \hyperlink{class_main_window_a974a3a4a0c5646eca195d209856079dc}{litwin}\hypertarget{class_main_window_a974a3a4a0c5646eca195d209856079dc}{}\label{class_main_window_a974a3a4a0c5646eca195d209856079dc}
+
+\begin{DoxyCompactList}\small\item\em Указатель на окно добавления новой прямой \end{DoxyCompactList}\item 
+\hyperlink{class_my_delete_curve}{My\+Delete\+Curve} $\ast$ \hyperlink{class_main_window_a2f05d7f42a79bcda8f6e0fd216bf20d0}{Del\+Win}\hypertarget{class_main_window_a2f05d7f42a79bcda8f6e0fd216bf20d0}{}\label{class_main_window_a2f05d7f42a79bcda8f6e0fd216bf20d0}
+
+\begin{DoxyCompactList}\small\item\em Указатель на окно удаления прямой \end{DoxyCompactList}\item 
+Q\+String \hyperlink{class_main_window_a212db452b7d30710f776bc89a0a7e3ea}{Name\+Of\+File}\hypertarget{class_main_window_a212db452b7d30710f776bc89a0a7e3ea}{}\label{class_main_window_a212db452b7d30710f776bc89a0a7e3ea}
+
+\begin{DoxyCompactList}\small\item\em Строка содержащая имя файла для функции Menu-\/$>$Save. \end{DoxyCompactList}\item 
+int \hyperlink{class_main_window_a64477d24d552b3390b29fa2e8fe8d9ec}{free\+\_\+index}\hypertarget{class_main_window_a64477d24d552b3390b29fa2e8fe8d9ec}{}\label{class_main_window_a64477d24d552b3390b29fa2e8fe8d9ec}
+
+\begin{DoxyCompactList}\small\item\em Индекс текущей точки для удаления \end{DoxyCompactList}\item 
+Qwt\+Plot\+Curve $\ast$ \hyperlink{class_main_window_af61a9a165ff7529da09043c9538c5fe2}{free\+\_\+tchk}\hypertarget{class_main_window_af61a9a165ff7529da09043c9538c5fe2}{}\label{class_main_window_af61a9a165ff7529da09043c9538c5fe2}
+
+\begin{DoxyCompactList}\small\item\em Прямая из одной точки, по сути подсвечивает активную точку для удаления \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Подробное описание}
+The \hyperlink{class_main_window}{Main\+Window} class. 
+
+Класс главного окна через которое происходит управление программой и в котором рисуются графики Содержит так же функции чтения и записи файлов, разборщик форматов и т.\+д. 
+
+См. определение в файле mainwindow.\+h строка 102
+
+
+
+\subsection{Методы}
+\index{Main\+Window@{Main\+Window}!add\+Curve@{add\+Curve}}
+\index{add\+Curve@{add\+Curve}!Main\+Window@{Main\+Window}}
+\subsubsection[{\texorpdfstring{add\+Curve(graph \&buf)}{addCurve(graph &buf)}}]{\setlength{\rightskip}{0pt plus 5cm}void Main\+Window\+::add\+Curve (
+\begin{DoxyParamCaption}
+\item[{{\bf graph} \&}]{buf}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_main_window_aa5c0998b1192bfab3ff83b02c42b2c67}{}\label{class_main_window_aa5c0998b1192bfab3ff83b02c42b2c67}
+
+
+add\+Curve 
+
+Добавляет новою прямую в вектор из прямых 
+\begin{DoxyParams}{Аргументы}
+{\em buf} & ссылка по которой находится данные о прямой \\
+\hline
+\end{DoxyParams}
+
+
+См. определение в файле mainwindow.\+cpp строка 64
+
+
+
+Перекрестные ссылки base, graph\+::blue, graph\+::green, graph\+::name, graph\+::pen, graph\+::red и ui.
+
+
+
+Используется в on\+\_\+action\+New\+\_\+curve\+\_\+triggered(), Read\+From\+Doc(), Read\+From\+Txt(), Read\+One\+From\+Doc() и Read\+One\+From\+Txt().
+
+
+\begin{DoxyCode}
+65 \{
+66     \textcolor{keywordtype}{int} index=\hyperlink{class_main_window_a3413d4508f4981518b1b8ebf3b29121e}{base}.size();\textcolor{comment}{//номер элемента в векторе base}
+67     \hyperlink{class_main_window_a3413d4508f4981518b1b8ebf3b29121e}{base}.push\_back(\hyperlink{classgraph}{graph}());
+68     \hyperlink{class_main_window_a3413d4508f4981518b1b8ebf3b29121e}{base}[index].curva=\textcolor{keyword}{new} QwtPlotCurve;
+69     \hyperlink{class_main_window_a3413d4508f4981518b1b8ebf3b29121e}{base}[index].name=buf.\hyperlink{classgraph_abfbbdbd09b20d6ef147ee966b1325595}{name};
+70     \hyperlink{class_main_window_a3413d4508f4981518b1b8ebf3b29121e}{base}[index].red=buf.\hyperlink{classgraph_aa3334acd551b2fc61901c2afdd4b2d8f}{red};
+71     \hyperlink{class_main_window_a3413d4508f4981518b1b8ebf3b29121e}{base}[index].green=buf.\hyperlink{classgraph_abb30b4156f98b6e0046f7192c389e4e4}{green};
+72     \hyperlink{class_main_window_a3413d4508f4981518b1b8ebf3b29121e}{base}[index].blue=buf.\hyperlink{classgraph_a2007891f138555cc8be9ca822b9fa2db}{blue};
+73     \hyperlink{class_main_window_a3413d4508f4981518b1b8ebf3b29121e}{base}[index].pen=buf.\hyperlink{classgraph_a237fa656ed0f8909b8eadd22aaeff422}{pen};
+74     \hyperlink{class_main_window_a3413d4508f4981518b1b8ebf3b29121e}{base}[index].curva->setPen( QColor(buf.\hyperlink{classgraph_aa3334acd551b2fc61901c2afdd4b2d8f}{red},buf.\hyperlink{classgraph_abb30b4156f98b6e0046f7192c389e4e4}{green},buf.\hyperlink{classgraph_a2007891f138555cc8be9ca822b9fa2db}{blue}), buf.
+      \hyperlink{classgraph_a237fa656ed0f8909b8eadd22aaeff422}{pen} );
+75     \hyperlink{class_main_window_a3413d4508f4981518b1b8ebf3b29121e}{base}[index].curva->setRenderHint
+76             ( QwtPlotItem::RenderAntialiased, \textcolor{keyword}{true} ); \textcolor{comment}{// сглаживание}
+77     QwtSymbol *symbol = \textcolor{keyword}{new} QwtSymbol( QwtSymbol::Ellipse,
+78     QBrush( Qt::white ), QPen( Qt::black ,3), QSize( 8, 8 ) );
+79     \hyperlink{class_main_window_a3413d4508f4981518b1b8ebf3b29121e}{base}[index].curva->setSymbol( symbol );
+80     \hyperlink{class_main_window_a3413d4508f4981518b1b8ebf3b29121e}{base}[index].curva->setTitle(buf.\hyperlink{classgraph_abfbbdbd09b20d6ef147ee966b1325595}{name});
+81     \hyperlink{class_main_window_a35466a70ed47252a0191168126a352a5}{ui}->UserCurve->addItem(buf.\hyperlink{classgraph_abfbbdbd09b20d6ef147ee966b1325595}{name},index);
+82     \hyperlink{class_main_window_a3413d4508f4981518b1b8ebf3b29121e}{base}[index].curva->attach( \hyperlink{class_main_window_a35466a70ed47252a0191168126a352a5}{ui}->Qwt\_Widget ); \textcolor{comment}{// отобразить кривую на графике}
+83 
+84 \}
+\end{DoxyCode}
+
+
+Граф вызова функции\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_main_window_aa5c0998b1192bfab3ff83b02c42b2c67_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{Main\+Window@{Main\+Window}!Append\+To\+Doc@{Append\+To\+Doc}}
+\index{Append\+To\+Doc@{Append\+To\+Doc}!Main\+Window@{Main\+Window}}
+\subsubsection[{\texorpdfstring{Append\+To\+Doc(bool \&flag, Q\+File \&file)}{AppendToDoc(bool &flag, QFile &file)}}]{\setlength{\rightskip}{0pt plus 5cm}void Main\+Window\+::\+Append\+To\+Doc (
+\begin{DoxyParamCaption}
+\item[{bool \&}]{flag, }
+\item[{Q\+File \&}]{file}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_main_window_ab31b6edb24cdb7744f4ab4db3300b29c}{}\label{class_main_window_ab31b6edb24cdb7744f4ab4db3300b29c}
+
+
+Append\+To\+Doc. 
+
+Записывает текущую прямую в конец уже использованно файла 
+\begin{DoxyParams}{Аргументы}
+{\em flag} & показатель записи 1 -\/ записано 0 -\/нет \\
+\hline
+{\em file} & ссылка на файл \\
+\hline
+\end{DoxyParams}
+
+
+См. определение в файле mainwindow.\+cpp строка 403
+
+
+
+Перекрестные ссылки base и ui.
+
+
+
+Используется в on\+\_\+action\+Save\+\_\+current\+\_\+curve\+\_\+as\+\_\+triggered() и on\+\_\+action\+Save\+\_\+current\+\_\+curve\+\_\+triggered().
+
+
+\begin{DoxyCode}
+404 \{
+405     \textcolor{keywordtype}{int} i=\hyperlink{class_main_window_a35466a70ed47252a0191168126a352a5}{ui}->UserCurve->currentIndex();
+406     QTextStream out(&file);
+407     out << \hyperlink{class_main_window_a3413d4508f4981518b1b8ebf3b29121e}{base}[i].name << \textcolor{stringliteral}{"\(\backslash\)t"} << \hyperlink{class_main_window_a3413d4508f4981518b1b8ebf3b29121e}{base}[i].red << \textcolor{stringliteral}{"\(\backslash\)t"} << \hyperlink{class_main_window_a3413d4508f4981518b1b8ebf3b29121e}{base}[i].green << \textcolor{stringliteral}{"\(\backslash\)t"} << 
+      \hyperlink{class_main_window_a3413d4508f4981518b1b8ebf3b29121e}{base}[i].blue << \textcolor{stringliteral}{"\(\backslash\)t"} << \hyperlink{class_main_window_a3413d4508f4981518b1b8ebf3b29121e}{base}[i].pen << \textcolor{stringliteral}{"\(\backslash\)n"};
+408     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} j=0; j<\hyperlink{class_main_window_a3413d4508f4981518b1b8ebf3b29121e}{base}[i].tchk.size();j++)
+409         \{
+410             out<<\hyperlink{class_main_window_a3413d4508f4981518b1b8ebf3b29121e}{base}[i].tchk[j].x()<<\textcolor{stringliteral}{"\(\backslash\)t"}<<\hyperlink{class_main_window_a3413d4508f4981518b1b8ebf3b29121e}{base}[i].tchk[j].y()<<\textcolor{stringliteral}{"\(\backslash\)n"};
+411             \textcolor{comment}{//return;}
+412         \}
+413     flag=\textcolor{keyword}{true};
+414 \}
+\end{DoxyCode}
+
+
+Граф вызова функции\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_main_window_ab31b6edb24cdb7744f4ab4db3300b29c_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{Main\+Window@{Main\+Window}!Append\+To\+Txt@{Append\+To\+Txt}}
+\index{Append\+To\+Txt@{Append\+To\+Txt}!Main\+Window@{Main\+Window}}
+\subsubsection[{\texorpdfstring{Append\+To\+Txt(bool \&flag, Q\+File \&file)}{AppendToTxt(bool &flag, QFile &file)}}]{\setlength{\rightskip}{0pt plus 5cm}void Main\+Window\+::\+Append\+To\+Txt (
+\begin{DoxyParamCaption}
+\item[{bool \&}]{flag, }
+\item[{Q\+File \&}]{file}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_main_window_ada72ba7c0365cd69528339a0298941d2}{}\label{class_main_window_ada72ba7c0365cd69528339a0298941d2}
+
+
+Append\+To\+Txt. 
+
+Записывает текущую прямую в конец уже использованно файла 
+\begin{DoxyParams}{Аргументы}
+{\em flag} & показатель записи 1 -\/ записано 0 -\/нет \\
+\hline
+{\em file} & ссылка на файл \\
+\hline
+\end{DoxyParams}
+
+
+См. определение в файле mainwindow.\+cpp строка 382
+
+
+
+Перекрестные ссылки base, graph\+::tchk и ui.
+
+
+
+Используется в on\+\_\+action\+Save\+\_\+current\+\_\+curve\+\_\+as\+\_\+triggered() и on\+\_\+action\+Save\+\_\+current\+\_\+curve\+\_\+triggered().
+
+
+\begin{DoxyCode}
+383 \{
+384     \textcolor{keywordtype}{int} i = \hyperlink{class_main_window_a35466a70ed47252a0191168126a352a5}{ui}->UserCurve->currentIndex();
+385     QTextStream out(&file);
+386     out << \hyperlink{class_main_window_a3413d4508f4981518b1b8ebf3b29121e}{base}[i].name << \textcolor{stringliteral}{"\(\backslash\)n"} << \hyperlink{class_main_window_a3413d4508f4981518b1b8ebf3b29121e}{base}[i].red << \textcolor{stringliteral}{"\(\backslash\)n"} << \hyperlink{class_main_window_a3413d4508f4981518b1b8ebf3b29121e}{base}[i].green << \textcolor{stringliteral}{"\(\backslash\)n"} << 
+      \hyperlink{class_main_window_a3413d4508f4981518b1b8ebf3b29121e}{base}[i].blue << \textcolor{stringliteral}{"\(\backslash\)n"} << \hyperlink{class_main_window_a3413d4508f4981518b1b8ebf3b29121e}{base}[i].pen << \textcolor{stringliteral}{"\(\backslash\)n"};
+387     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} j=0; j<\hyperlink{class_main_window_a3413d4508f4981518b1b8ebf3b29121e}{base}[i].tchk.size();j++)
+388         out<<\hyperlink{class_main_window_a3413d4508f4981518b1b8ebf3b29121e}{base}[i].tchk[j].x()<<\textcolor{stringliteral}{"\(\backslash\)n"}<<\hyperlink{class_main_window_a3413d4508f4981518b1b8ebf3b29121e}{base}[i].tchk[j].y()<<\textcolor{stringliteral}{"\(\backslash\)n"};
+389     flag=\textcolor{keyword}{true};
+390 \}
+\end{DoxyCode}
+
+
+Граф вызова функции\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_main_window_ada72ba7c0365cd69528339a0298941d2_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{Main\+Window@{Main\+Window}!on\+\_\+action\+Save\+\_\+current\+\_\+curve\+\_\+as\+\_\+triggered@{on\+\_\+action\+Save\+\_\+current\+\_\+curve\+\_\+as\+\_\+triggered}}
+\index{on\+\_\+action\+Save\+\_\+current\+\_\+curve\+\_\+as\+\_\+triggered@{on\+\_\+action\+Save\+\_\+current\+\_\+curve\+\_\+as\+\_\+triggered}!Main\+Window@{Main\+Window}}
+\subsubsection[{\texorpdfstring{on\+\_\+action\+Save\+\_\+current\+\_\+curve\+\_\+as\+\_\+triggered}{on_actionSave_current_curve_as_triggered}}]{\setlength{\rightskip}{0pt plus 5cm}void Main\+Window\+::on\+\_\+action\+Save\+\_\+current\+\_\+curve\+\_\+as\+\_\+triggered (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}\hypertarget{class_main_window_ad0e13c15f3efed36489c68de4bb6434f}{}\label{class_main_window_ad0e13c15f3efed36489c68de4bb6434f}
+brief Сохраняет одну активную прямую в конец выбранного файла
+
+\begin{DoxyWarning}{Предупреждения}
+Не обращайте внимания на вопрос о замене файла, ничего не будет заменено. 
+\end{DoxyWarning}
+
+
+См. определение в файле mainwindow.\+cpp строка 754
+
+
+
+Перекрестные ссылки Append\+To\+Doc(), Append\+To\+Txt(), base, Name\+Of\+File и ui.
+
+
+\begin{DoxyCode}
+755 \{
+756     QString fileName = QFileDialog::getSaveFileName(\textcolor{keyword}{this}, tr(\textcolor{stringliteral}{"Save As"}), \textcolor{stringliteral}{"C://"},\textcolor{stringliteral}{".txt(*.txt);;.doc(*.doc)"})
+      ;
+757     \textcolor{keywordflow}{if} (fileName != \textcolor{stringliteral}{""})
+758     \{
+759 
+760         \textcolor{keywordtype}{bool} flag=\textcolor{keyword}{false};
+761         QFile file(fileName);
+762         \textcolor{keywordflow}{if}(file.exists())
+763             file.open(QIODevice::Append);
+764         \textcolor{keywordflow}{if} (file.open(QIODevice::WriteOnly)||file.isOpen())
+765         \{
+766             \textcolor{keywordflow}{if}(fileName[fileName.length()-1]==\textcolor{charliteral}{'t'})\textcolor{comment}{//определяем что txt}
+767                 \hyperlink{class_main_window_ada72ba7c0365cd69528339a0298941d2}{AppendToTxt}(flag,file);
+768             \textcolor{keywordflow}{if}(fileName[fileName.length()-1]==\textcolor{charliteral}{'c'})\textcolor{comment}{//А это док}
+769                 \hyperlink{class_main_window_ab31b6edb24cdb7744f4ab4db3300b29c}{AppendToDoc}(flag,file);
+770             \textcolor{keywordflow}{if}(!flag)\textcolor{comment}{//Если запись не произошла}
+771                 QMessageBox::critical(\textcolor{keyword}{this}, tr(\textcolor{stringliteral}{"Error"}), tr(\textcolor{stringliteral}{"Изменения не сохранены."})); \textcolor{comment}{//Типо если файл
+       нельзя читать то ошибко.}
+772             \textcolor{keywordflow}{else}\textcolor{comment}{//Записываем имя для повторного сохранения}
+773             \{
+774                 \hyperlink{class_main_window_a212db452b7d30710f776bc89a0a7e3ea}{NameOfFile}=fileName;
+775                 QMessageBox::information(\textcolor{keyword}{this}, tr(\textcolor{stringliteral}{"Done"}),tr(\textcolor{stringliteral}{"Прямая %1 сохранена в %2"}).arg((
+      \hyperlink{class_main_window_a3413d4508f4981518b1b8ebf3b29121e}{base}[\hyperlink{class_main_window_a35466a70ed47252a0191168126a352a5}{ui}->UserCurve->currentIndex()].name),\hyperlink{class_main_window_a212db452b7d30710f776bc89a0a7e3ea}{NameOfFile}));
+776             \}
+777             file.close();
+778         \}
+779         \textcolor{keywordflow}{else}
+780         \{
+781             QMessageBox::critical(\textcolor{keyword}{this}, tr(\textcolor{stringliteral}{"Error"}), tr(\textcolor{stringliteral}{"Could not open file"})); \textcolor{comment}{//Нет прав на запись}
+782             \textcolor{keywordflow}{return};
+783         \}
+784     \}
+785     \textcolor{keywordflow}{else}
+786         QMessageBox::critical(\textcolor{keyword}{this}, tr(\textcolor{stringliteral}{"Error"}), tr(\textcolor{stringliteral}{"Задан пустой путь до файла."})); \textcolor{comment}{//Типо если файл
+       нельзя читать то ошибко.}
+787 
+788 \}
+\end{DoxyCode}
+
+
+Граф вызовов\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_main_window_ad0e13c15f3efed36489c68de4bb6434f_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{Main\+Window@{Main\+Window}!Read\+From\+Doc@{Read\+From\+Doc}}
+\index{Read\+From\+Doc@{Read\+From\+Doc}!Main\+Window@{Main\+Window}}
+\subsubsection[{\texorpdfstring{Read\+From\+Doc(bool \&flag, Q\+File \&file)}{ReadFromDoc(bool &flag, QFile &file)}}]{\setlength{\rightskip}{0pt plus 5cm}void Main\+Window\+::\+Read\+From\+Doc (
+\begin{DoxyParamCaption}
+\item[{bool \&}]{flag, }
+\item[{Q\+File \&}]{file}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_main_window_a219bfb3f9f9946118aaebb0e88f64315}{}\label{class_main_window_a219bfb3f9f9946118aaebb0e88f64315}
+
+
+Read\+From\+Doc. 
+
+Читает список прямых из .doc формата \begin{DoxyWarning}{Предупреждения}
+Прямые должны быть оформлены соответственно.~\newline
+смотрите \hyperlink{class_main_window_aa84cdb1ab42ba6621bf43fc2d126bcf4}{Save\+To\+Doc()}; 
+\end{DoxyWarning}
+
+\begin{DoxyParams}{Аргументы}
+{\em flag} & удачно ли было проведено чтение 1 -\/ да 0 -\/нет \\
+\hline
+{\em file} & ссылка на файл \\
+\hline
+\end{DoxyParams}
+
+
+См. определение в файле mainwindow.\+cpp строка 524
+
+
+
+Перекрестные ссылки add\+Curve(), base, graph\+::blue, graph\+::green, graph\+::name, graph\+::pen, graph\+::red, reshow() и graph\+::tchk.
+
+
+
+Используется в on\+\_\+action\+Open\+\_\+file\+\_\+triggered().
+
+
+\begin{DoxyCode}
+525 \{
+526     \textcolor{keyword}{class }\hyperlink{classgraph}{graph} nov;
+527     QTextStream in(&file);
+528     \textcolor{keywordtype}{int} i=-1;
+529     \textcolor{keywordflow}{while}(1)
+530     \{
+531         QString buf;
+532         buf=in.readLine();
+533         QStringList lst = buf.split(\textcolor{stringliteral}{"\(\backslash\)t"});
+534         \textcolor{keywordflow}{if}(lst.size()==5)
+535         \{
+536             nov.name=lst.at(0);
+537             nov.red=lst.at(1).toInt();
+538             nov.green=lst.at(2).toInt();
+539             nov.blue=lst.at(3).toInt();
+540             nov.pen=lst.at(4).toDouble();
+541             \hyperlink{class_main_window_aa5c0998b1192bfab3ff83b02c42b2c67}{addCurve}(nov);
+542             i++;
+543         \}
+544         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(lst.size()==2)
+545         \{   \hyperlink{class_main_window_a3413d4508f4981518b1b8ebf3b29121e}{base}[i].tchk.push\_back(QPointF(lst.at(0).toDouble(),lst.at(1).toDouble()));
+546 
+547         \}
+548         \textcolor{keywordflow}{if}(buf.isEmpty() && lst.size()<=1)
+549         \{
+550             \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} j=0;j<\hyperlink{class_main_window_a3413d4508f4981518b1b8ebf3b29121e}{base}.size();j++)
+551             \{
+552                 \hyperlink{class_main_window_a3413d4508f4981518b1b8ebf3b29121e}{base}[j].curva->setSamples(\hyperlink{class_main_window_a3413d4508f4981518b1b8ebf3b29121e}{base}[j].\hyperlink{classgraph_afae7c6852c8de983693fb2fd108ed3c4}{tchk});
+553                 \hyperlink{class_main_window_a24985964bdf5f59467dcc99749e06bdd}{reshow}();
+554             \}
+555             flag=\textcolor{keyword}{true};
+556             \textcolor{keywordflow}{break};
+557         \}
+558     \}
+559 \}
+\end{DoxyCode}
+
+
+Граф вызовов\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_main_window_a219bfb3f9f9946118aaebb0e88f64315_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Граф вызова функции\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_main_window_a219bfb3f9f9946118aaebb0e88f64315_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{Main\+Window@{Main\+Window}!Read\+From\+Txt@{Read\+From\+Txt}}
+\index{Read\+From\+Txt@{Read\+From\+Txt}!Main\+Window@{Main\+Window}}
+\subsubsection[{\texorpdfstring{Read\+From\+Txt(bool \&flag, Q\+File \&file)}{ReadFromTxt(bool &flag, QFile &file)}}]{\setlength{\rightskip}{0pt plus 5cm}void Main\+Window\+::\+Read\+From\+Txt (
+\begin{DoxyParamCaption}
+\item[{bool \&}]{flag, }
+\item[{Q\+File \&}]{file}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_main_window_ac280af7b364789fa7b6e2274fb8a9e2a}{}\label{class_main_window_ac280af7b364789fa7b6e2274fb8a9e2a}
+
+
+Read\+From\+Txt. 
+
+Читает список прямых из .txt формата \begin{DoxyWarning}{Предупреждения}
+Прямые должны быть оформлены соответственно.~\newline
+смотрите \hyperlink{class_main_window_a64f7c1216a075bf75d3c2e7fb88fd371}{Save\+To\+Txt()}; 
+\end{DoxyWarning}
+
+\begin{DoxyParams}{Аргументы}
+{\em flag} & удачно ли было проведено чтение 1 -\/ да 0 -\/нет \\
+\hline
+{\em file} & ссылка на файл \\
+\hline
+\end{DoxyParams}
+
+
+См. определение в файле mainwindow.\+cpp строка 416
+
+
+
+Перекрестные ссылки add\+Curve(), base, graph\+::blue, graph\+::green, graph\+::name, graph\+::pen, graph\+::red, reshow() и graph\+::tchk.
+
+
+
+Используется в on\+\_\+action\+Open\+\_\+file\+\_\+triggered().
+
+
+\begin{DoxyCode}
+417 \{
+418     \textcolor{comment}{//qDebug()<<"Тут.";}
+419     \textcolor{keywordtype}{bool} ok;
+420     QTextStream in(&file);
+421     \textcolor{keyword}{class }\hyperlink{classgraph}{graph} nov;
+422     \textcolor{keywordtype}{int} i=-1;
+423     \textcolor{keywordflow}{while}(1)
+424     \{
+425         QString buf;
+426         buf=in.readLine();
+427         \textcolor{keywordflow}{if}(buf.isEmpty())
+428         \{
+429             \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} j=0;j<\hyperlink{class_main_window_a3413d4508f4981518b1b8ebf3b29121e}{base}.size();j++)
+430             \{
+431                 \hyperlink{class_main_window_a3413d4508f4981518b1b8ebf3b29121e}{base}[j].curva->setSamples(\hyperlink{class_main_window_a3413d4508f4981518b1b8ebf3b29121e}{base}[j].\hyperlink{classgraph_afae7c6852c8de983693fb2fd108ed3c4}{tchk});
+432                 \hyperlink{class_main_window_a24985964bdf5f59467dcc99749e06bdd}{reshow}();
+433             \}
+434             flag=\textcolor{keyword}{true};
+435             \textcolor{keywordflow}{break};
+436         \}
+437         buf.toDouble(&ok);
+438         \textcolor{keywordflow}{if}(!ok)
+439         \{
+440             nov.name=buf;
+441             buf=in.readLine();
+442             nov.red=buf.toInt();
+443             buf=in.readLine();
+444             nov.green=buf.toInt();
+445             buf=in.readLine();
+446             nov.blue=buf.toInt();
+447             buf=in.readLine();
+448             nov.pen=buf.toDouble();
+449             \hyperlink{class_main_window_aa5c0998b1192bfab3ff83b02c42b2c67}{addCurve}(nov);
+450             i++;
+451         \}
+452         \textcolor{keywordflow}{else}
+453         \{
+454             QString bufy;
+455             bufy=in.readLine();
+456             \hyperlink{class_main_window_a3413d4508f4981518b1b8ebf3b29121e}{base}[i].tchk.push\_back(QPointF(buf.toDouble(),bufy.toDouble()));
+457         \}
+458 
+459     \}
+460 \}
+\end{DoxyCode}
+
+
+Граф вызовов\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_main_window_ac280af7b364789fa7b6e2274fb8a9e2a_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Граф вызова функции\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_main_window_ac280af7b364789fa7b6e2274fb8a9e2a_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{Main\+Window@{Main\+Window}!Read\+One\+From\+Doc@{Read\+One\+From\+Doc}}
+\index{Read\+One\+From\+Doc@{Read\+One\+From\+Doc}!Main\+Window@{Main\+Window}}
+\subsubsection[{\texorpdfstring{Read\+One\+From\+Doc(bool \&flag, Q\+File \&file)}{ReadOneFromDoc(bool &flag, QFile &file)}}]{\setlength{\rightskip}{0pt plus 5cm}void Main\+Window\+::\+Read\+One\+From\+Doc (
+\begin{DoxyParamCaption}
+\item[{bool \&}]{flag, }
+\item[{Q\+File \&}]{file}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_main_window_a72ec1547630d1af06f61888bb623fad6}{}\label{class_main_window_a72ec1547630d1af06f61888bb623fad6}
+
+
+Read\+One\+From\+Doc. 
+
+Читает ОДНУ ПРЯМУЮ из .doc формата \begin{DoxyWarning}{Предупреждения}
+Читает ПЕРВУЮ прямую 
+\end{DoxyWarning}
+
+\begin{DoxyParams}{Аргументы}
+{\em flag} & удачно ли было проведено чтение 1 -\/ да 0 -\/нет \\
+\hline
+{\em file} & ссылка на файл \\
+\hline
+\end{DoxyParams}
+
+
+См. определение в файле mainwindow.\+cpp строка 495
+
+
+
+Перекрестные ссылки add\+Curve(), base, graph\+::blue, graph\+::green, graph\+::name, graph\+::pen, graph\+::red и reshow().
+
+
+
+Используется в on\+\_\+action\+Open\+\_\+one\+\_\+curve\+\_\+triggered().
+
+
+\begin{DoxyCode}
+496 \{
+497     \textcolor{keyword}{class }\hyperlink{classgraph}{graph} nov;
+498     QTextStream in(&file);
+499     QString buf;
+500     buf=in.readLine();
+501     QStringList lst = buf.split(\textcolor{stringliteral}{"\(\backslash\)t"});
+502     nov.name=lst.at(0);
+503     nov.red=lst.at(1).toInt();
+504     nov.green=lst.at(2).toInt();
+505     nov.blue=lst.at(3).toInt();
+506     nov.pen=lst.at(4).toDouble();
+507     \hyperlink{class_main_window_aa5c0998b1192bfab3ff83b02c42b2c67}{addCurve}(nov);
+508     \textcolor{keywordflow}{while}(1)
+509     \{
+510         buf=in.readLine();
+511         QStringList lst1;
+512         lst1=buf.split(\textcolor{stringliteral}{"\(\backslash\)t"});
+513         \textcolor{keywordflow}{if}((buf.isEmpty() && lst1.size()<=1) || lst1.size()==5)
+514             \textcolor{keywordflow}{break};
+515 
+516         \hyperlink{class_main_window_a3413d4508f4981518b1b8ebf3b29121e}{base}[\hyperlink{class_main_window_a3413d4508f4981518b1b8ebf3b29121e}{base}.size()-1].tchk.push\_back(QPointF(lst1.at(0).toDouble(),lst1.at(1).toDouble()));
+517 
+518     \}
+519     \hyperlink{class_main_window_a3413d4508f4981518b1b8ebf3b29121e}{base}[\hyperlink{class_main_window_a3413d4508f4981518b1b8ebf3b29121e}{base}.size()-1].curva->setSamples(\hyperlink{class_main_window_a3413d4508f4981518b1b8ebf3b29121e}{base}[\hyperlink{class_main_window_a3413d4508f4981518b1b8ebf3b29121e}{base}.size()-1].tchk);
+520     \hyperlink{class_main_window_a24985964bdf5f59467dcc99749e06bdd}{reshow}();
+521     flag=\textcolor{keyword}{true};
+522 \}
+\end{DoxyCode}
+
+
+Граф вызовов\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_main_window_a72ec1547630d1af06f61888bb623fad6_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Граф вызова функции\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_main_window_a72ec1547630d1af06f61888bb623fad6_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{Main\+Window@{Main\+Window}!Read\+One\+From\+Txt@{Read\+One\+From\+Txt}}
+\index{Read\+One\+From\+Txt@{Read\+One\+From\+Txt}!Main\+Window@{Main\+Window}}
+\subsubsection[{\texorpdfstring{Read\+One\+From\+Txt(bool \&flag, Q\+File \&file)}{ReadOneFromTxt(bool &flag, QFile &file)}}]{\setlength{\rightskip}{0pt plus 5cm}void Main\+Window\+::\+Read\+One\+From\+Txt (
+\begin{DoxyParamCaption}
+\item[{bool \&}]{flag, }
+\item[{Q\+File \&}]{file}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_main_window_a50c6d26a5751b97d502334de0c43fcef}{}\label{class_main_window_a50c6d26a5751b97d502334de0c43fcef}
+
+
+Read\+One\+From\+Txt. 
+
+Читает ОДНУ ПРЯМУЮ из .txt формата \begin{DoxyWarning}{Предупреждения}
+Читает ПЕРВУЮ прямую 
+\end{DoxyWarning}
+
+\begin{DoxyParams}{Аргументы}
+{\em flag} & удачно ли было проведено чтение 1 -\/ да 0 -\/нет \\
+\hline
+{\em file} & ссылка на файл \\
+\hline
+\end{DoxyParams}
+
+
+См. определение в файле mainwindow.\+cpp строка 461
+
+
+
+Перекрестные ссылки add\+Curve(), base, graph\+::blue, graph\+::green, graph\+::name, graph\+::pen, graph\+::red, reshow() и ui.
+
+
+
+Используется в on\+\_\+action\+Open\+\_\+one\+\_\+curve\+\_\+triggered().
+
+
+\begin{DoxyCode}
+462 \{
+463     QTextStream in(&file);
+464     \textcolor{keyword}{class }\hyperlink{classgraph}{graph} nov;
+465     QString buf;
+466     buf=in.readLine();
+467     nov.\hyperlink{classgraph_abfbbdbd09b20d6ef147ee966b1325595}{name}=buf;
+468     buf=in.readLine();
+469     nov.red=buf.toInt();
+470     buf=in.readLine();
+471     nov.green=buf.toInt();
+472     buf=in.readLine();
+473     nov.blue=buf.toInt();
+474     buf=in.readLine();
+475     nov.pen=buf.toDouble();
+476     \hyperlink{class_main_window_aa5c0998b1192bfab3ff83b02c42b2c67}{addCurve}(nov);
+477     \textcolor{keywordtype}{bool} ok;
+478     \textcolor{keywordflow}{while}(1)
+479     \{
+480         buf=in.readLine();
+481         buf.toDouble(&ok);
+482         \textcolor{keywordflow}{if}(buf.isEmpty() || ok==\textcolor{keyword}{false})
+483             \textcolor{keywordflow}{break};
+484         QString bufy;
+485         bufy=in.readLine();
+486         qDebug()<<\hyperlink{class_main_window_a35466a70ed47252a0191168126a352a5}{ui}->UserCurve->currentIndex();
+487         qDebug()<<\hyperlink{class_main_window_a3413d4508f4981518b1b8ebf3b29121e}{base}.size();
+488         \hyperlink{class_main_window_a3413d4508f4981518b1b8ebf3b29121e}{base}[\hyperlink{class_main_window_a3413d4508f4981518b1b8ebf3b29121e}{base}.size()-1].tchk.push\_back(QPointF(buf.toDouble(),bufy.toDouble()));
+489         \hyperlink{class_main_window_a24985964bdf5f59467dcc99749e06bdd}{reshow}();
+490 
+491     \}
+492     \hyperlink{class_main_window_a3413d4508f4981518b1b8ebf3b29121e}{base}[\hyperlink{class_main_window_a3413d4508f4981518b1b8ebf3b29121e}{base}.size()-1].curva->setSamples(\hyperlink{class_main_window_a3413d4508f4981518b1b8ebf3b29121e}{base}[\hyperlink{class_main_window_a3413d4508f4981518b1b8ebf3b29121e}{base}.size()-1].tchk);
+493     flag=\textcolor{keyword}{true};
+494 \}
+\end{DoxyCode}
+
+
+Граф вызовов\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_main_window_a50c6d26a5751b97d502334de0c43fcef_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Граф вызова функции\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_main_window_a50c6d26a5751b97d502334de0c43fcef_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{Main\+Window@{Main\+Window}!Save\+To\+Doc@{Save\+To\+Doc}}
+\index{Save\+To\+Doc@{Save\+To\+Doc}!Main\+Window@{Main\+Window}}
+\subsubsection[{\texorpdfstring{Save\+To\+Doc(bool \&flag, Q\+File \&file)}{SaveToDoc(bool &flag, QFile &file)}}]{\setlength{\rightskip}{0pt plus 5cm}void Main\+Window\+::\+Save\+To\+Doc (
+\begin{DoxyParamCaption}
+\item[{bool \&}]{flag, }
+\item[{Q\+File \&}]{file}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_main_window_aa84cdb1ab42ba6621bf43fc2d126bcf4}{}\label{class_main_window_aa84cdb1ab42ba6621bf43fc2d126bcf4}
+
+
+Save\+To\+Doc. 
+
+Сохраняет в .doc формат \begin{DoxyWarning}{Предупреждения}
+Важен определенный формат расположения , а именно \+: ~\newline
+Имя прямой \textquotesingle{}T\+AB\textquotesingle{} Красный цвет \textquotesingle{}T\+AB\textquotesingle{} Зеленый цвет \textquotesingle{}T\+AB\textquotesingle{} Синий цвет \textquotesingle{}T\+AB\textquotesingle{} Толщина~\newline
+Координата x \textquotesingle{}T\+AB\textquotesingle{} Координата y 
+\end{DoxyWarning}
+
+\begin{DoxyParams}{Аргументы}
+{\em flag} & определяет удачна ли была запись 1 -\/ да 0 -\/ нет \\
+\hline
+{\em file} & ссылка на файл \\
+\hline
+\end{DoxyParams}
+
+
+См. определение в файле mainwindow.\+cpp строка 392
+
+
+
+Перекрестные ссылки base и graph\+::tchk.
+
+
+
+Используется в on\+\_\+action\+Save\+\_\+\+File\+\_\+as\+\_\+triggered() и on\+\_\+action\+Save\+\_\+\+File\+\_\+triggered().
+
+
+\begin{DoxyCode}
+393 \{
+394     QTextStream out(&file);
+395     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i=0; i<\hyperlink{class_main_window_a3413d4508f4981518b1b8ebf3b29121e}{base}.size(); i++)
+396     \{
+397         out << \hyperlink{class_main_window_a3413d4508f4981518b1b8ebf3b29121e}{base}[i].name << \textcolor{stringliteral}{"\(\backslash\)t"} << \hyperlink{class_main_window_a3413d4508f4981518b1b8ebf3b29121e}{base}[i].red << \textcolor{stringliteral}{"\(\backslash\)t"} << \hyperlink{class_main_window_a3413d4508f4981518b1b8ebf3b29121e}{base}[i].green << \textcolor{stringliteral}{"\(\backslash\)t"} << 
+      \hyperlink{class_main_window_a3413d4508f4981518b1b8ebf3b29121e}{base}[i].blue << \textcolor{stringliteral}{"\(\backslash\)t"} << \hyperlink{class_main_window_a3413d4508f4981518b1b8ebf3b29121e}{base}[i].pen << \textcolor{stringliteral}{"\(\backslash\)n"};
+398         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} j=0; j<\hyperlink{class_main_window_a3413d4508f4981518b1b8ebf3b29121e}{base}[i].tchk.size();j++)
+399             out<<\hyperlink{class_main_window_a3413d4508f4981518b1b8ebf3b29121e}{base}[i].\hyperlink{classgraph_afae7c6852c8de983693fb2fd108ed3c4}{tchk}[j].x()<<\textcolor{stringliteral}{"\(\backslash\)t"}<<\hyperlink{class_main_window_a3413d4508f4981518b1b8ebf3b29121e}{base}[i].tchk[j].y()<<\textcolor{stringliteral}{"\(\backslash\)n"};
+400     \}
+401     flag=\textcolor{keyword}{true};
+402 \}
+\end{DoxyCode}
+
+
+Граф вызова функции\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_main_window_aa84cdb1ab42ba6621bf43fc2d126bcf4_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{Main\+Window@{Main\+Window}!Save\+To\+Txt@{Save\+To\+Txt}}
+\index{Save\+To\+Txt@{Save\+To\+Txt}!Main\+Window@{Main\+Window}}
+\subsubsection[{\texorpdfstring{Save\+To\+Txt(bool \&flag, Q\+File \&file)}{SaveToTxt(bool &flag, QFile &file)}}]{\setlength{\rightskip}{0pt plus 5cm}void Main\+Window\+::\+Save\+To\+Txt (
+\begin{DoxyParamCaption}
+\item[{bool \&}]{flag, }
+\item[{Q\+File \&}]{file}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{class_main_window_a64f7c1216a075bf75d3c2e7fb88fd371}{}\label{class_main_window_a64f7c1216a075bf75d3c2e7fb88fd371}
+
+
+Save\+To\+Txt. 
+
+Сохраняет в .txt формат \begin{DoxyWarning}{Предупреждения}
+Важен определнный порядок расположения данных , а именно \+: ~\newline
+Имя прямой~\newline
+Красный цвет~\newline
+Зелеый цвет~\newline
+Синий цвет~\newline
+Толщина~\newline
+Координата по x~\newline
+Координата по y~\newline
+
+\end{DoxyWarning}
+
+\begin{DoxyParams}{Аргументы}
+{\em flag} & определяет удачна ли была запись 1 -\/ да 0 -\/ нет \\
+\hline
+{\em file} & ссылка на файл \\
+\hline
+\end{DoxyParams}
+
+
+См. определение в файле mainwindow.\+cpp строка 365
+
+
+
+Перекрестные ссылки base.
+
+
+
+Используется в on\+\_\+action\+Save\+\_\+\+File\+\_\+as\+\_\+triggered() и on\+\_\+action\+Save\+\_\+\+File\+\_\+triggered().
+
+
+\begin{DoxyCode}
+366 \{
+367     \textcolor{comment}{//qDebug()<< "Это .txt" ;}
+368     QTextStream out(&file);
+369 
+370     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i=0; i<\hyperlink{class_main_window_a3413d4508f4981518b1b8ebf3b29121e}{base}.size(); i++)
+371     \{
+372         out << \hyperlink{class_main_window_a3413d4508f4981518b1b8ebf3b29121e}{base}[i].name << \textcolor{stringliteral}{"\(\backslash\)n"} << \hyperlink{class_main_window_a3413d4508f4981518b1b8ebf3b29121e}{base}[i].red << \textcolor{stringliteral}{"\(\backslash\)n"} << \hyperlink{class_main_window_a3413d4508f4981518b1b8ebf3b29121e}{base}[i].green << \textcolor{stringliteral}{"\(\backslash\)n"} << 
+      \hyperlink{class_main_window_a3413d4508f4981518b1b8ebf3b29121e}{base}[i].blue << \textcolor{stringliteral}{"\(\backslash\)n"} << \hyperlink{class_main_window_a3413d4508f4981518b1b8ebf3b29121e}{base}[i].pen << \textcolor{stringliteral}{"\(\backslash\)n"};
+373         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} j=0; j<\hyperlink{class_main_window_a3413d4508f4981518b1b8ebf3b29121e}{base}[i].tchk.size();j++)
+374             \{
+375                 out<<\hyperlink{class_main_window_a3413d4508f4981518b1b8ebf3b29121e}{base}[i].tchk[j].x()<<\textcolor{stringliteral}{"\(\backslash\)n"}<<\hyperlink{class_main_window_a3413d4508f4981518b1b8ebf3b29121e}{base}[i].tchk[j].y()<<\textcolor{stringliteral}{"\(\backslash\)n"};
+376                 \textcolor{comment}{//return;}
+377             \}
+378     \}
+379     flag=\textcolor{keyword}{true};
+380 
+381 \}
+\end{DoxyCode}
+
+
+Граф вызова функции\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_main_window_a64f7c1216a075bf75d3c2e7fb88fd371_icgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+\item 
+/home/silence/workplace/\+U\+I/c\+\_\+plus/\hyperlink{mainwindow_8h}{mainwindow.\+h}\item 
+/home/silence/workplace/\+U\+I/c\+\_\+plus/mainwindow.\+cpp\end{DoxyCompactItemize}

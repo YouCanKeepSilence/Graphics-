@@ -1,0 +1,126 @@
+\hypertarget{classgraph}{}\section{Класс graph}
+\label{classgraph}\index{graph@{graph}}
+
+
+The graph class.  
+
+
+
+
+{\ttfamily \#include $<$mainwindow.\+h$>$}
+
+
+
+Граф связей класса graph\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=214pt]{classgraph__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classgraph_a6aaa56b4528d2fdb8f0ecd97e04f6651}{graph} ()\hypertarget{classgraph_a6aaa56b4528d2fdb8f0ecd97e04f6651}{}\label{classgraph_a6aaa56b4528d2fdb8f0ecd97e04f6651}
+
+\begin{DoxyCompactList}\small\item\em конструктор выделяет память под прямую Qwt\+Plot\+Curve. \end{DoxyCompactList}\item 
+void \hyperlink{classgraph_af46434aacc2b15519b6a25943570ce05}{Move\+From\+Back\+Without} ()\hypertarget{classgraph_af46434aacc2b15519b6a25943570ce05}{}\label{classgraph_af46434aacc2b15519b6a25943570ce05}
+
+\begin{DoxyCompactList}\small\item\em Функция, отвечающая за сортировку точек по координате x , с заменой точек с одинаковыми значениями новой \end{DoxyCompactList}\item 
+int \hyperlink{classgraph_a69b8295dbfe6bcfab5050e3fdcc257f2}{Find\+Near} (double coordX, double coordY)
+\begin{DoxyCompactList}\small\item\em Функция возвращающая индекс ближайшей точки к области клика \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Открытые атрибуты}
+\begin{DoxyCompactItemize}
+\item 
+Qwt\+Plot\+Curve $\ast$ \hyperlink{classgraph_abbfdc5f6022afe7be261bf927498e92e}{curva}\hypertarget{classgraph_abbfdc5f6022afe7be261bf927498e92e}{}\label{classgraph_abbfdc5f6022afe7be261bf927498e92e}
+
+\begin{DoxyCompactList}\small\item\em Указатель на прямую , которая в итоге рисуется \end{DoxyCompactList}\item 
+Q\+String \hyperlink{classgraph_abfbbdbd09b20d6ef147ee966b1325595}{name}\hypertarget{classgraph_abfbbdbd09b20d6ef147ee966b1325595}{}\label{classgraph_abfbbdbd09b20d6ef147ee966b1325595}
+
+\begin{DoxyCompactList}\small\item\em Имя этой прямой \end{DoxyCompactList}\item 
+Q\+Vector$<$ Q\+PointF $>$ \hyperlink{classgraph_afae7c6852c8de983693fb2fd108ed3c4}{tchk}\hypertarget{classgraph_afae7c6852c8de983693fb2fd108ed3c4}{}\label{classgraph_afae7c6852c8de983693fb2fd108ed3c4}
+
+\begin{DoxyCompactList}\small\item\em Вектор, содержащий все точки прямой \end{DoxyCompactList}\item 
+int \hyperlink{classgraph_aa3334acd551b2fc61901c2afdd4b2d8f}{red}\hypertarget{classgraph_aa3334acd551b2fc61901c2afdd4b2d8f}{}\label{classgraph_aa3334acd551b2fc61901c2afdd4b2d8f}
+
+\begin{DoxyCompactList}\small\item\em Цвет прямой в формате R\+GB. \end{DoxyCompactList}\item 
+int \hyperlink{classgraph_abb30b4156f98b6e0046f7192c389e4e4}{green}\hypertarget{classgraph_abb30b4156f98b6e0046f7192c389e4e4}{}\label{classgraph_abb30b4156f98b6e0046f7192c389e4e4}
+
+\begin{DoxyCompactList}\small\item\em Цвет прямой в формате R\+GB. \end{DoxyCompactList}\item 
+int \hyperlink{classgraph_a2007891f138555cc8be9ca822b9fa2db}{blue}\hypertarget{classgraph_a2007891f138555cc8be9ca822b9fa2db}{}\label{classgraph_a2007891f138555cc8be9ca822b9fa2db}
+
+\begin{DoxyCompactList}\small\item\em Цвет прямой в формате R\+GB. \end{DoxyCompactList}\item 
+double \hyperlink{classgraph_a237fa656ed0f8909b8eadd22aaeff422}{pen}\hypertarget{classgraph_a237fa656ed0f8909b8eadd22aaeff422}{}\label{classgraph_a237fa656ed0f8909b8eadd22aaeff422}
+
+\begin{DoxyCompactList}\small\item\em Толщина прямой \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Подробное описание}
+The graph class. 
+
+Класс , содержащий все данные об одной прямой 
+
+См. определение в файле mainwindow.\+h строка 58
+
+
+
+\subsection{Методы}
+\index{graph@{graph}!Find\+Near@{Find\+Near}}
+\index{Find\+Near@{Find\+Near}!graph@{graph}}
+\subsubsection[{\texorpdfstring{Find\+Near(double coord\+X, double coord\+Y)}{FindNear(double coordX, double coordY)}}]{\setlength{\rightskip}{0pt plus 5cm}int graph\+::\+Find\+Near (
+\begin{DoxyParamCaption}
+\item[{double}]{coordX, }
+\item[{double}]{coordY}
+\end{DoxyParamCaption}
+)}\hypertarget{classgraph_a69b8295dbfe6bcfab5050e3fdcc257f2}{}\label{classgraph_a69b8295dbfe6bcfab5050e3fdcc257f2}
+
+
+Функция возвращающая индекс ближайшей точки к области клика 
+
+Индекс находится через наименьшую гипотенузу по теореме Пифагора 
+\begin{DoxyParams}{Аргументы}
+{\em coordX,coordY} & координты точки клика \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+индекс ближайшей точки 
+\end{DoxyReturn}
+
+
+См. определение в файле mainwindow.\+cpp строка 342
+
+
+
+Перекрестные ссылки tchk.
+
+
+\begin{DoxyCode}
+343 \{
+344     \textcolor{keywordtype}{int} i,index=-1;
+345     \textcolor{keywordtype}{double} mindlin=-1.0;
+346     \textcolor{keywordtype}{int} bufdlin;
+347     \textcolor{keywordflow}{if}(\hyperlink{classgraph_afae7c6852c8de983693fb2fd108ed3c4}{tchk}.size()>0)
+348     \{
+349         index=0;
+350         mindlin=(\hyperlink{classgraph_afae7c6852c8de983693fb2fd108ed3c4}{tchk}[0].x()-coordX)*(\hyperlink{classgraph_afae7c6852c8de983693fb2fd108ed3c4}{tchk}[0].x()-coordX)+(\hyperlink{classgraph_afae7c6852c8de983693fb2fd108ed3c4}{tchk}[0].y()-coordY)*(
+      \hyperlink{classgraph_afae7c6852c8de983693fb2fd108ed3c4}{tchk}[0].y()-coordY);
+351     \}
+352     \textcolor{keywordflow}{for}(i=1;i<\hyperlink{classgraph_afae7c6852c8de983693fb2fd108ed3c4}{tchk}.size();i++)
+353     \{
+354         bufdlin=(\hyperlink{classgraph_afae7c6852c8de983693fb2fd108ed3c4}{tchk}[i].x()-coordX)*(\hyperlink{classgraph_afae7c6852c8de983693fb2fd108ed3c4}{tchk}[i].x()-coordX)
+355                 +(\hyperlink{classgraph_afae7c6852c8de983693fb2fd108ed3c4}{tchk}[i].y()-coordY)*(\hyperlink{classgraph_afae7c6852c8de983693fb2fd108ed3c4}{tchk}[i].y()-coordY);
+356         \textcolor{keywordflow}{if}(bufdlin<mindlin)
+357         \{
+358             index=i;
+359             mindlin=bufdlin;
+360         \}
+361     \}
+362     \textcolor{keywordflow}{return} index;
+363 \}
+\end{DoxyCode}
+
+
+Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+\item 
+/home/silence/workplace/\+U\+I/c\+\_\+plus/\hyperlink{mainwindow_8h}{mainwindow.\+h}\item 
+/home/silence/workplace/\+U\+I/c\+\_\+plus/mainwindow.\+cpp\end{DoxyCompactItemize}

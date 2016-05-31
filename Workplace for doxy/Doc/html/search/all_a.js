@@ -1,0 +1,21 @@
+var searchData=
+[
+  ['okclicked',['OkClicked',['../class_my_new_curve.html#a220756368617b53ca4c70237ae018a08',1,'MyNewCurve']]],
+  ['on_5factiondelete_5fcurve_5ftriggered',['on_actionDelete_curve_triggered',['../class_main_window.html#a6107fba5e2e27b6234ebcf703cf305b1',1,'MainWindow']]],
+  ['on_5factionnew_5fcurve_5ftriggered',['on_actionNew_curve_triggered',['../class_main_window.html#a39584a1d717e2430f7c8666071760335',1,'MainWindow']]],
+  ['on_5factionopen_5ffile_5ftriggered',['on_actionOpen_file_triggered',['../class_main_window.html#ab4b13cfa6d7b65dfdea897e7e8425874',1,'MainWindow']]],
+  ['on_5factionopen_5fone_5fcurve_5ftriggered',['on_actionOpen_one_curve_triggered',['../class_main_window.html#a0c0436c2de50da0d7cf5b26242a694ad',1,'MainWindow']]],
+  ['on_5factionsave_5fcurrent_5fcurve_5fas_5ftriggered',['on_actionSave_current_curve_as_triggered',['../class_main_window.html#ad0e13c15f3efed36489c68de4bb6434f',1,'MainWindow']]],
+  ['on_5factionsave_5fcurrent_5fcurve_5ftriggered',['on_actionSave_current_curve_triggered',['../class_main_window.html#adb1ff161c75d24a3aa5d5aa71e3cbb91',1,'MainWindow']]],
+  ['on_5factionsave_5ffile_5fas_5ftriggered',['on_actionSave_File_as_triggered',['../class_main_window.html#ad0e823ebb5284bffb3eb92f95d6b0c79',1,'MainWindow']]],
+  ['on_5factionsave_5ffile_5ftriggered',['on_actionSave_File_triggered',['../class_main_window.html#ab389ed5a61b95186643e6966ba965d5f',1,'MainWindow']]],
+  ['on_5fadd_5fclicked',['on_add_clicked',['../class_main_window.html#ac5d7fe3c822551a9525b83fb6b3b99d3',1,'MainWindow']]],
+  ['on_5ffree_5fclicked',['on_free_clicked',['../class_main_window.html#ad7f5879e59277f275c452d99d2d1e923',1,'MainWindow']]],
+  ['on_5flineeditx_5ftextchanged',['on_lineEditX_textChanged',['../class_main_window.html#afa3811da5b85f09d356f9c417970fb5d',1,'MainWindow']]],
+  ['on_5flineedity_5ftextchanged',['on_lineEditY_textChanged',['../class_main_window.html#a5f00712967779082bc1e5099f139c0c4',1,'MainWindow']]],
+  ['on_5fonel_5fclicked',['on_OneL_clicked',['../class_main_window.html#ac1cc49b084dceb4e44b973819b8bc9cc',1,'MainWindow']]],
+  ['on_5foner_5fclicked',['on_OneR_clicked',['../class_main_window.html#afa3f2fb370e2b3c9064880d9aa9a8d14',1,'MainWindow']]],
+  ['on_5ftwol_5fclicked',['on_TwoL_clicked',['../class_main_window.html#a3fd8329ca1b8ee5d2ac4da65ee5b6617',1,'MainWindow']]],
+  ['on_5ftwor_5fclicked',['on_TWoR_clicked',['../class_main_window.html#ac38bdf92edc1e6cbd07cced4497aa964',1,'MainWindow']]],
+  ['on_5fusercurve_5fcurrentindexchanged',['on_UserCurve_currentIndexChanged',['../class_main_window.html#abe5494f1256abd53569e546236078ead',1,'MainWindow']]]
+];

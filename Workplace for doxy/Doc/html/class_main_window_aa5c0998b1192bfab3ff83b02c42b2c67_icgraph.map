@@ -1,0 +1,9 @@
+<map id="MainWindow::addCurve" name="MainWindow::addCurve">
+<area shape="rect" id="node2" href="$class_main_window.html#a39584a1d717e2430f7c8666071760335" title="Нажатие Edit&#45;&gt;New Curve. " alt="" coords="228,5,416,47"/>
+<area shape="rect" id="node3" href="$class_main_window.html#a219bfb3f9f9946118aaebb0e88f64315" title="ReadFromDoc. " alt="" coords="227,71,417,98"/>
+<area shape="rect" id="node5" href="$class_main_window.html#ac280af7b364789fa7b6e2274fb8a9e2a" title="ReadFromTxt. " alt="" coords="229,122,415,149"/>
+<area shape="rect" id="node6" href="$class_main_window.html#a72ec1547630d1af06f61888bb623fad6" title="ReadOneFromDoc. " alt="" coords="215,173,429,199"/>
+<area shape="rect" id="node8" href="$class_main_window.html#a50c6d26a5751b97d502334de0c43fcef" title="ReadOneFromTxt. " alt="" coords="217,223,427,250"/>
+<area shape="rect" id="node4" href="$class_main_window.html#ab4b13cfa6d7b65dfdea897e7e8425874" title="Нажатие Menu&#45;&gt;Open. " alt="" coords="477,99,669,140"/>
+<area shape="rect" id="node7" href="$class_main_window.html#a0c0436c2de50da0d7cf5b26242a694ad" title="Добавляет одну прямую из начала выбранного файла " alt="" coords="477,181,669,223"/>
+</map>
