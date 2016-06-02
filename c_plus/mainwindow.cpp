@@ -361,20 +361,27 @@ int graph::FindNear(double coordX,double coordY)
     }
     return index;
 }
-
-void MainWindow::SaveToTxt(bool &flag, QFile &file)
+void MainWindow::SetTchk()
 {
-    //qDebug()<< "Это .txt" ;
-    QTextStream out(&file);
-
-    for(int i=0; i<base.size(); i++)
+    for(int j=0;j<FromFile.size();j++)
     {
-        out << base[i].name << "\n" << base[i].red << "\n" << base[i].green << "\n" << base[i].blue << "\n" << base[i].pen << "\n";
-        for(int j=0; j<base[i].tchk.size();j++)
-            {
-                out<<base[i].tchk[j].x()<<"\n"<<base[i].tchk[j].y()<<"\n";
-                //return;
-            }
+        addCurve(FromFile[j]);
+        base[j].tchk=FromFile[j].tchk;
+        qDebug()<<base[j].tchk;
+        base[j].curva->setSamples(base[j].tchk);
+        reshow();
+    }
+
+}
+
+void Txt::SaveTo(bool &flag, QFile &file, QVector<graph> &FF)
+{
+    QTextStream out(&file);
+    for(int i=0; i<FF.size(); i++)
+    {
+        out << FF[i].name << "\n" << FF[i].red << "\n" << FF[i].green << "\n" << FF[i].blue << "\n" << FF[i].pen << "\n";
+        for(int j=0; j<FF[i].tchk.size();j++)
+            out<<FF[i].tchk[j].x()<<"\n"<<FF[i].tchk[j].y()<<"\n";
     }
     flag=true;
 
@@ -413,9 +420,8 @@ void MainWindow::AppendToDoc(bool &flag, QFile &file)
     flag=true;
 }
 
-void MainWindow::ReadFromTxt(bool &flag, QFile &file)
+void Txt::ReadFrom(bool &flag, QFile &file,QVector <graph> &FF)
 {
-    //qDebug()<<"Тут.";
     bool ok;
     QTextStream in(&file);
     class graph nov;
@@ -426,11 +432,7 @@ void MainWindow::ReadFromTxt(bool &flag, QFile &file)
         buf=in.readLine();
         if(buf.isEmpty())
         {
-            for(int j=0;j<base.size();j++)
-            {
-                base[j].curva->setSamples(base[j].tchk);
-                reshow();
-            }
+
             flag=true;
             break;
         }
@@ -446,14 +448,15 @@ void MainWindow::ReadFromTxt(bool &flag, QFile &file)
             nov.blue=buf.toInt();
             buf=in.readLine();
             nov.pen=buf.toDouble();
-            addCurve(nov);
+            //addCurve(nov);
+            FF.push_back(nov);
             i++;
         }
         else
         {
             QString bufy;
             bufy=in.readLine();
-            base[i].tchk.push_back(QPointF(buf.toDouble(),bufy.toDouble()));
+            FF[i].tchk.push_back(QPointF(buf.toDouble(),bufy.toDouble()));
         }
 
     }
@@ -594,7 +597,7 @@ void MainWindow::on_actionOpen_file_triggered()
         if (fileName != "")
         {
             QFile file(fileName);
-            QTextStream in(&file);
+            //QTextStream in(&file);
             bool flag=false;
             bool okay;
             if (!file.open(QIODevice::ReadOnly))
@@ -602,17 +605,24 @@ void MainWindow::on_actionOpen_file_triggered()
                 QMessageBox::critical(this, tr("Error"), tr("Could not open file")); //Типо если файл нельзя читать то ошибко.
                 return;
             }
+            FormatFactory* WorkFile;
             if(fileName[fileName.length()-1]=='t')//для тхт формата.
             {
-
+                WorkFile=new Txt;
                 if(base.size()!=0)//Проверяем если есть прямые то выводим окно да\нет про удаление прямых иначе просто читаем.
                 {
                     CheckVector(okay);
                     if(okay)
-                        ReadFromTxt(flag,file);
+                    {
+                        WorkFile->ReadFrom(flag,file,FromFile);
+                    }
                 }
                 else
-                    ReadFromTxt(flag,file);
+                    WorkFile->ReadFrom(flag,file,FromFile);
+                    //ReadFromTxt(flag,file);
+                base=FromFile;
+                SetTchk();
+                FromFile.clear();
 
             }
             else if(fileName[fileName.length()-1]=='c')//для doc формата.
@@ -644,12 +654,17 @@ void MainWindow::on_actionSave_File_as_triggered()
     QString fileName = QFileDialog::getSaveFileName(this, tr("Save As"), "C://",".txt(*.txt);;.doc(*.doc)");
     if (fileName != "")
     {
+        FromFile=base;
         bool flag=false;
         QFile file(fileName);
         if (file.open(QIODevice::WriteOnly))
-        {            
+        {
+            FormatFactory* WorkFile;
             if(fileName[fileName.length()-1]=='t')//определяем что txt
-                SaveToTxt(flag,file);
+            {
+                WorkFile=new Txt;
+                WorkFile->SaveTo(flag,file,FromFile);
+            }
             if(fileName[fileName.length()-1]=='c')//А это док
                 SaveToDoc(flag,file);
             if(!flag)//Если запись не произошла
@@ -659,16 +674,17 @@ void MainWindow::on_actionSave_File_as_triggered()
                 NameOfFile=fileName;
                 QMessageBox::information(this, tr("Done"),tr("Сохранено в %1").arg(NameOfFile));
             }
+            delete WorkFile;
             file.close();
         }
         else
-        {
             QMessageBox::critical(this, tr("Error"), tr("Could not open file")); //Нет прав на запись
-            return;
-        }
+
     }
     else
         QMessageBox::critical(this, tr("Error"), tr("Задан пустой путь до файла.")); //Типо если файл нельзя читать то ошибко.
+    FromFile.clear();
+
 }
 
 void MainWindow::on_actionSave_File_triggered()
@@ -680,7 +696,7 @@ void MainWindow::on_actionSave_File_triggered()
         if (file.open(QIODevice::WriteOnly))
         {
             if(NameOfFile[NameOfFile.length()-1]=='t')
-                SaveToTxt(flag,file);
+                //SaveToTxt(flag,file);
             if(NameOfFile[NameOfFile.length()-1]=='c')
                 SaveToDoc(flag,file);
             if(flag)

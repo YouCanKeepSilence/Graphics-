@@ -92,6 +92,34 @@ public:
      */
     int FindNear(double coordX,double coordY);
 };
+class FormatFactory
+{
+
+public:
+    /*QFile filen;
+    bool flagn;
+    graph bufn;*/
+    /*FormatFactory(){
+        qDebug()<<"создан";
+    };*/
+    /*virtual void ReadOneFrom()=0;
+    virtual void AppendTo()=0;*/
+    virtual void ReadFrom(bool &flag, QFile &file,QVector <graph> &FF)=0;
+    virtual void SaveTo(bool &flag, QFile &file,QVector <graph> &FF)=0;
+
+};
+
+class Txt : public FormatFactory
+{
+
+
+    /*void ReadOneFrom();
+    void AppendTo();*/
+    void ReadFrom(bool &flag, QFile &file,QVector <graph> &FF);
+    void SaveTo(bool &flag, QFile &file,QVector <graph> &FF);
+public:
+    //Txt();
+};
 
 /*!
  * \brief The MainWindow class
@@ -103,6 +131,7 @@ class MainWindow : public QMainWindow
 {
     Q_OBJECT
 public:
+    QVector <graph> FromFile;
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
@@ -263,6 +292,8 @@ private:
      * \param buf ссылка по которой находится данные о прямой
      */
     void addCurve(graph &buf);
+    ///Прикрепляет точки к графику после чтения из файла
+    void SetTchk();
     ///Используется для перезагрузки поля графиков, т.е. для отрисовки новых прямых
     void reshow();
     ///Активация приближения по колесику мыши
