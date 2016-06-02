@@ -60,7 +60,7 @@ The graph class.
 
 Класс , содержащий все данные об одной прямой 
 
-См. определение в файле mainwindow.\+h строка 58
+См. определение в файле mainwindow.\+h строка 64
 
 
 
@@ -87,7 +87,7 @@ The graph class.
 \end{DoxyReturn}
 
 
-См. определение в файле mainwindow.\+cpp строка 342
+См. определение в файле mainwindow.\+cpp строка 347
 
 
 
@@ -95,28 +95,28 @@ The graph class.
 
 
 \begin{DoxyCode}
-343 \{
-344     \textcolor{keywordtype}{int} i,index=-1;
-345     \textcolor{keywordtype}{double} mindlin=-1.0;
-346     \textcolor{keywordtype}{int} bufdlin;
-347     \textcolor{keywordflow}{if}(\hyperlink{classgraph_afae7c6852c8de983693fb2fd108ed3c4}{tchk}.size()>0)
-348     \{
-349         index=0;
-350         mindlin=(\hyperlink{classgraph_afae7c6852c8de983693fb2fd108ed3c4}{tchk}[0].x()-coordX)*(\hyperlink{classgraph_afae7c6852c8de983693fb2fd108ed3c4}{tchk}[0].x()-coordX)+(\hyperlink{classgraph_afae7c6852c8de983693fb2fd108ed3c4}{tchk}[0].y()-coordY)*(
-      \hyperlink{classgraph_afae7c6852c8de983693fb2fd108ed3c4}{tchk}[0].y()-coordY);
-351     \}
-352     \textcolor{keywordflow}{for}(i=1;i<\hyperlink{classgraph_afae7c6852c8de983693fb2fd108ed3c4}{tchk}.size();i++)
+348 \{
+349     \textcolor{keywordtype}{int} i,index=-1;
+350     \textcolor{keywordtype}{double} mindlin=-1.0;
+351     \textcolor{keywordtype}{int} bufdlin;
+352     \textcolor{keywordflow}{if}(\hyperlink{classgraph_afae7c6852c8de983693fb2fd108ed3c4}{tchk}.size()>0)
 353     \{
-354         bufdlin=(\hyperlink{classgraph_afae7c6852c8de983693fb2fd108ed3c4}{tchk}[i].x()-coordX)*(\hyperlink{classgraph_afae7c6852c8de983693fb2fd108ed3c4}{tchk}[i].x()-coordX)
-355                 +(\hyperlink{classgraph_afae7c6852c8de983693fb2fd108ed3c4}{tchk}[i].y()-coordY)*(\hyperlink{classgraph_afae7c6852c8de983693fb2fd108ed3c4}{tchk}[i].y()-coordY);
-356         \textcolor{keywordflow}{if}(bufdlin<mindlin)
-357         \{
-358             index=i;
-359             mindlin=bufdlin;
-360         \}
-361     \}
-362     \textcolor{keywordflow}{return} index;
-363 \}
+354         index=0;
+355         mindlin=(\hyperlink{classgraph_afae7c6852c8de983693fb2fd108ed3c4}{tchk}[0].x()-coordX)*(\hyperlink{classgraph_afae7c6852c8de983693fb2fd108ed3c4}{tchk}[0].x()-coordX)+(\hyperlink{classgraph_afae7c6852c8de983693fb2fd108ed3c4}{tchk}[0].y()-coordY)*(
+      \hyperlink{classgraph_afae7c6852c8de983693fb2fd108ed3c4}{tchk}[0].y()-coordY);
+356     \}
+357     \textcolor{keywordflow}{for}(i=1;i<\hyperlink{classgraph_afae7c6852c8de983693fb2fd108ed3c4}{tchk}.size();i++)
+358     \{
+359         bufdlin=(\hyperlink{classgraph_afae7c6852c8de983693fb2fd108ed3c4}{tchk}[i].x()-coordX)*(\hyperlink{classgraph_afae7c6852c8de983693fb2fd108ed3c4}{tchk}[i].x()-coordX)
+360                 +(\hyperlink{classgraph_afae7c6852c8de983693fb2fd108ed3c4}{tchk}[i].y()-coordY)*(\hyperlink{classgraph_afae7c6852c8de983693fb2fd108ed3c4}{tchk}[i].y()-coordY);
+361         \textcolor{keywordflow}{if}(bufdlin<mindlin)
+362         \{
+363             index=i;
+364             mindlin=bufdlin;
+365         \}
+366     \}
+367     \textcolor{keywordflow}{return} index;
+368 \}
 \end{DoxyCode}
 
 

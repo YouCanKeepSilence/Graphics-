@@ -1,4 +1,4 @@
 <map id="MainWindow::on_actionSave_current_curve_as_triggered" name="MainWindow::on_actionSave_current_curve_as_triggered">
-<area shape="rect" id="node2" href="$class_main_window.html#ab31b6edb24cdb7744f4ab4db3300b29c" title="AppendToDoc. " alt="" coords="244,5,432,32"/>
-<area shape="rect" id="node3" href="$class_main_window.html#ada72ba7c0365cd69528339a0298941d2" title="AppendToTxt. " alt="" coords="247,56,429,83"/>
+<area shape="rect" id="node2" href="$class_txt.html#a4d23910d9b7f36e4f82fdf6045135378" title="Функция сохранения одной прямой в конец файла .txt. " alt="" coords="247,5,355,32"/>
+<area shape="rect" id="node3" href="$class_doc.html#af5c9529b9108d9155b0d725f066b3d67" title="Функция сохранения одной прямой в конец файла .doc. " alt="" coords="244,56,357,83"/>
 </map>

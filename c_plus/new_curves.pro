@@ -14,11 +14,13 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    mydialogcurve.cpp
+    mydialogcurve.cpp \
+    workwithfiles.cpp
 
 HEADERS  += mainwindow.h \
     mydialogcurve.h \
-    libs.h
+    libs.h \
+    workwithfiles.h
 
 FORMS    += mainwindow.ui
 INCLUDEPATH += /usr/include/qwt/

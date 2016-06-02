@@ -1,0 +1,211 @@
+\hypertarget{class_format_factory}{}\section{Класс Format\+Factory}
+\label{class_format_factory}\index{Format\+Factory@{Format\+Factory}}
+
+
+The \hyperlink{class_format_factory}{Format\+Factory} class.  
+
+
+
+
+{\ttfamily \#include $<$workwithfiles.\+h$>$}
+
+
+
+Граф наследования\+:Format\+Factory\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=282pt]{class_format_factory__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Граф связей класса Format\+Factory\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=181pt]{class_format_factory__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{class_format_factory_a0002fa7430aefd926ac94c38155b146e}{Read\+One\+From} (bool \&flag, Q\+File \&file, \hyperlink{classgraph}{graph} \&FF)=0
+\begin{DoxyCompactList}\small\item\em Функция чтения первой прямой из файла \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_format_factory_ae29ad79ca214f944962094487e668c8c}{Append\+To} (bool \&flag, Q\+File \&file, \hyperlink{classgraph}{graph} \&FF)=0
+\begin{DoxyCompactList}\small\item\em Функция дописывания одной прямой в конец \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_format_factory_ad3136c43b27e86cf755106381081e67c}{Read\+From} (bool \&flag, Q\+File \&file, Q\+Vector$<$ \hyperlink{classgraph}{graph} $>$ \&FF)=0
+\begin{DoxyCompactList}\small\item\em Функция чтения всех прямых из файла \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_format_factory_ac787363aa133a274ae674526dcc2b301}{Save\+To} (bool \&flag, Q\+File \&file, Q\+Vector$<$ \hyperlink{classgraph}{graph} $>$ \&FF)=0
+\begin{DoxyCompactList}\small\item\em Функция сохранения всех прямых \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Подробное описание}
+The \hyperlink{class_format_factory}{Format\+Factory} class. 
+
+Абстрактный класс от которого производится наследование форматов 
+
+См. определение в файле workwithfiles.\+h строка 19
+
+
+
+\subsection{Методы}
+\index{Format\+Factory@{Format\+Factory}!Append\+To@{Append\+To}}
+\index{Append\+To@{Append\+To}!Format\+Factory@{Format\+Factory}}
+\subsubsection[{\texorpdfstring{Append\+To(bool \&flag, Q\+File \&file, graph \&\+F\+F)=0}{AppendTo(bool &flag, QFile &file, graph &FF)=0}}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Format\+Factory\+::\+Append\+To (
+\begin{DoxyParamCaption}
+\item[{bool \&}]{flag, }
+\item[{Q\+File \&}]{file, }
+\item[{{\bf graph} \&}]{FF}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}\hypertarget{class_format_factory_ae29ad79ca214f944962094487e668c8c}{}\label{class_format_factory_ae29ad79ca214f944962094487e668c8c}
+
+
+Функция дописывания одной прямой в конец 
+
+Чисто виртуальная функция, уникальная для каждого класса наследника~\newline
+см \hyperlink{class_txt_a4d23910d9b7f36e4f82fdf6045135378}{Txt\+::\+Append\+To()} и \hyperlink{class_doc_af5c9529b9108d9155b0d725f066b3d67}{Doc\+::\+Append\+To()} 
+\begin{DoxyParams}{Аргументы}
+{\em flag} & показатель записи 1 -\/ записано 0 -\/нет \\
+\hline
+{\em file} & ссылка на файл \\
+\hline
+{\em FF} & ссылка на нужную прямую \\
+\hline
+\end{DoxyParams}
+
+
+Замещается в \hyperlink{class_doc_af5c9529b9108d9155b0d725f066b3d67}{Doc} и \hyperlink{class_txt_a4d23910d9b7f36e4f82fdf6045135378}{Txt}.
+
+\index{Format\+Factory@{Format\+Factory}!Read\+From@{Read\+From}}
+\index{Read\+From@{Read\+From}!Format\+Factory@{Format\+Factory}}
+\subsubsection[{\texorpdfstring{Read\+From(bool \&flag, Q\+File \&file, Q\+Vector$<$ graph $>$ \&\+F\+F)=0}{ReadFrom(bool &flag, QFile &file, QVector< graph > &FF)=0}}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Format\+Factory\+::\+Read\+From (
+\begin{DoxyParamCaption}
+\item[{bool \&}]{flag, }
+\item[{Q\+File \&}]{file, }
+\item[{Q\+Vector$<$ {\bf graph} $>$ \&}]{FF}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}\hypertarget{class_format_factory_ad3136c43b27e86cf755106381081e67c}{}\label{class_format_factory_ad3136c43b27e86cf755106381081e67c}
+
+
+Функция чтения всех прямых из файла 
+
+Чисто виртуальная функция, уникальная для каждого класса наследника~\newline
+см \hyperlink{class_txt_a2109a6bb72b2277dc5eb134a0f4f3257}{Txt\+::\+Read\+From()} и \hyperlink{class_doc_aa9359b8e110d9d26bcd25b68e1001743}{Doc\+::\+Read\+From()} 
+\begin{DoxyParams}{Аргументы}
+{\em flag} & удачно ли было проведено чтение 1 -\/ да 0 -\/нет \\
+\hline
+{\em file} & ссылка на файл \\
+\hline
+{\em FF} & промежуточный вектор с прямыми \\
+\hline
+\end{DoxyParams}
+
+
+Замещается в \hyperlink{class_doc_aa9359b8e110d9d26bcd25b68e1001743}{Doc} и \hyperlink{class_txt_a2109a6bb72b2277dc5eb134a0f4f3257}{Txt}.
+
+
+
+Используется в Main\+Window\+::on\+\_\+action\+Open\+\_\+file\+\_\+triggered().
+
+
+
+Граф вызова функции\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_format_factory_ad3136c43b27e86cf755106381081e67c_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{Format\+Factory@{Format\+Factory}!Read\+One\+From@{Read\+One\+From}}
+\index{Read\+One\+From@{Read\+One\+From}!Format\+Factory@{Format\+Factory}}
+\subsubsection[{\texorpdfstring{Read\+One\+From(bool \&flag, Q\+File \&file, graph \&\+F\+F)=0}{ReadOneFrom(bool &flag, QFile &file, graph &FF)=0}}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Format\+Factory\+::\+Read\+One\+From (
+\begin{DoxyParamCaption}
+\item[{bool \&}]{flag, }
+\item[{Q\+File \&}]{file, }
+\item[{{\bf graph} \&}]{FF}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}\hypertarget{class_format_factory_a0002fa7430aefd926ac94c38155b146e}{}\label{class_format_factory_a0002fa7430aefd926ac94c38155b146e}
+
+
+Функция чтения первой прямой из файла 
+
+Чисто виртуальная функция, уникальная для каждого класса наследника~\newline
+см \hyperlink{class_txt_a1fa6a42957c0e72314c7ba70eb3fab76}{Txt\+::\+Read\+One\+From()} и \hyperlink{class_doc_a3706c27d55dbb3fe7356a6b5dbb72b5c}{Doc\+::\+Read\+One\+From()} 
+\begin{DoxyParams}{Аргументы}
+{\em flag} & удачно ли было проведено чтение 1 -\/ да 0 -\/нет \\
+\hline
+{\em file} & ссылка на файл \\
+\hline
+{\em FF} & промежуточный вектор с прямыми \\
+\hline
+\end{DoxyParams}
+
+
+Замещается в \hyperlink{class_doc_a3706c27d55dbb3fe7356a6b5dbb72b5c}{Doc} и \hyperlink{class_txt_a1fa6a42957c0e72314c7ba70eb3fab76}{Txt}.
+
+
+
+Используется в Main\+Window\+::on\+\_\+action\+Open\+\_\+one\+\_\+curve\+\_\+triggered().
+
+
+
+Граф вызова функции\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_format_factory_a0002fa7430aefd926ac94c38155b146e_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{Format\+Factory@{Format\+Factory}!Save\+To@{Save\+To}}
+\index{Save\+To@{Save\+To}!Format\+Factory@{Format\+Factory}}
+\subsubsection[{\texorpdfstring{Save\+To(bool \&flag, Q\+File \&file, Q\+Vector$<$ graph $>$ \&\+F\+F)=0}{SaveTo(bool &flag, QFile &file, QVector< graph > &FF)=0}}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Format\+Factory\+::\+Save\+To (
+\begin{DoxyParamCaption}
+\item[{bool \&}]{flag, }
+\item[{Q\+File \&}]{file, }
+\item[{Q\+Vector$<$ {\bf graph} $>$ \&}]{FF}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}\hypertarget{class_format_factory_ac787363aa133a274ae674526dcc2b301}{}\label{class_format_factory_ac787363aa133a274ae674526dcc2b301}
+
+
+Функция сохранения всех прямых 
+
+Чисто виртуальная функция , уникальная для каждого класса наследника~\newline
+см. \hyperlink{class_txt_abe4239811b140dd6fc5a439be6964aa0}{Txt\+::\+Save\+To()} и \hyperlink{class_doc_a00303c942160d3e6f69b38e387f12a03}{Doc\+::\+Save\+To()}~\newline
+
+\begin{DoxyParams}{Аргументы}
+{\em flag} & определяет удачна ли была запись 1 -\/ да 0 -\/ нет \\
+\hline
+{\em file} & ссылка на файл \\
+\hline
+{\em FF} & все прямые для записи \\
+\hline
+\end{DoxyParams}
+
+
+Замещается в \hyperlink{class_doc_a00303c942160d3e6f69b38e387f12a03}{Doc} и \hyperlink{class_txt_abe4239811b140dd6fc5a439be6964aa0}{Txt}.
+
+
+
+Используется в Main\+Window\+::on\+\_\+action\+Save\+\_\+\+File\+\_\+as\+\_\+triggered() и Main\+Window\+::on\+\_\+action\+Save\+\_\+\+File\+\_\+triggered().
+
+
+
+Граф вызова функции\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_format_factory_ac787363aa133a274ae674526dcc2b301_icgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Объявления и описания членов класса находятся в файле\+:\begin{DoxyCompactItemize}
+\item 
+/home/silence/workplace/\+U\+I/c\+\_\+plus/\hyperlink{workwithfiles_8h}{workwithfiles.\+h}\end{DoxyCompactItemize}

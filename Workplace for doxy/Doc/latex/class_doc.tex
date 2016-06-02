@@ -1,0 +1,305 @@
+\hypertarget{class_doc}{}\section{Класс Doc}
+\label{class_doc}\index{Doc@{Doc}}
+
+
+Класс для работы с .doc форматом  
+
+
+
+
+{\ttfamily \#include $<$workwithfiles.\+h$>$}
+
+
+
+Граф наследования\+:Doc\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=181pt]{class_doc__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Граф связей класса Doc\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=181pt]{class_doc__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Закрытые члены}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_doc_a3706c27d55dbb3fe7356a6b5dbb72b5c}{Read\+One\+From} (bool \&flag, Q\+File \&file, \hyperlink{classgraph}{graph} \&FF)
+\begin{DoxyCompactList}\small\item\em Читает одну прямую из .doc формата \end{DoxyCompactList}\item 
+void \hyperlink{class_doc_af5c9529b9108d9155b0d725f066b3d67}{Append\+To} (bool \&flag, Q\+File \&file, \hyperlink{classgraph}{graph} \&FF)
+\begin{DoxyCompactList}\small\item\em Функция сохранения одной прямой в конец файла .doc. \end{DoxyCompactList}\item 
+void \hyperlink{class_doc_aa9359b8e110d9d26bcd25b68e1001743}{Read\+From} (bool \&flag, Q\+File \&file, Q\+Vector$<$ \hyperlink{classgraph}{graph} $>$ \&FF)
+\begin{DoxyCompactList}\small\item\em Читает все прямые из .doc формата \end{DoxyCompactList}\item 
+void \hyperlink{class_doc_a00303c942160d3e6f69b38e387f12a03}{Save\+To} (bool \&flag, Q\+File \&file, Q\+Vector$<$ \hyperlink{classgraph}{graph} $>$ \&FF)
+\begin{DoxyCompactList}\small\item\em Функция сохранения в формат .doc. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Дополнительные унаследованные члены}
+
+
+\subsection{Подробное описание}
+Класс для работы с .doc форматом 
+
+См. определение в файле workwithfiles.\+h строка 122
+
+
+
+\subsection{Методы}
+\index{Doc@{Doc}!Append\+To@{Append\+To}}
+\index{Append\+To@{Append\+To}!Doc@{Doc}}
+\subsubsection[{\texorpdfstring{Append\+To(bool \&flag, Q\+File \&file, graph \&\+F\+F)}{AppendTo(bool &flag, QFile &file, graph &FF)}}]{\setlength{\rightskip}{0pt plus 5cm}void Doc\+::\+Append\+To (
+\begin{DoxyParamCaption}
+\item[{bool \&}]{flag, }
+\item[{Q\+File \&}]{file, }
+\item[{{\bf graph} \&}]{FF}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [virtual]}}\hypertarget{class_doc_af5c9529b9108d9155b0d725f066b3d67}{}\label{class_doc_af5c9529b9108d9155b0d725f066b3d67}
+
+
+Функция сохранения одной прямой в конец файла .doc. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em flag} & показатель записи 1 -\/ записано 0 -\/нет \\
+\hline
+{\em file} & ссылка на файл \\
+\hline
+{\em FF} & ссылка на нужную прямую \\
+\hline
+\end{DoxyParams}
+
+
+Замещает \hyperlink{class_format_factory_ae29ad79ca214f944962094487e668c8c}{Format\+Factory}.
+
+
+
+См. определение в файле workwithfiles.\+cpp строка 163
+
+
+
+Перекрестные ссылки graph\+::blue, graph\+::green, graph\+::name, graph\+::pen, graph\+::red и graph\+::tchk.
+
+
+
+Используется в Main\+Window\+::on\+\_\+action\+Save\+\_\+current\+\_\+curve\+\_\+as\+\_\+triggered() и Main\+Window\+::on\+\_\+action\+Save\+\_\+current\+\_\+curve\+\_\+triggered().
+
+
+\begin{DoxyCode}
+164 \{
+165     QTextStream out(&file);
+166     out << FF.\hyperlink{classgraph_abfbbdbd09b20d6ef147ee966b1325595}{name} << \textcolor{stringliteral}{"\(\backslash\)t"} << FF.\hyperlink{classgraph_aa3334acd551b2fc61901c2afdd4b2d8f}{red} << \textcolor{stringliteral}{"\(\backslash\)t"} << FF.\hyperlink{classgraph_abb30b4156f98b6e0046f7192c389e4e4}{green} << \textcolor{stringliteral}{"\(\backslash\)t"} << FF.
+      \hyperlink{classgraph_a2007891f138555cc8be9ca822b9fa2db}{blue} << \textcolor{stringliteral}{"\(\backslash\)t"} << FF.\hyperlink{classgraph_a237fa656ed0f8909b8eadd22aaeff422}{pen} << \textcolor{stringliteral}{"\(\backslash\)n"};
+167     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} j=0; j<FF.\hyperlink{classgraph_afae7c6852c8de983693fb2fd108ed3c4}{tchk}.size();j++)
+168             out<<FF.\hyperlink{classgraph_afae7c6852c8de983693fb2fd108ed3c4}{tchk}[j].x()<<\textcolor{stringliteral}{"\(\backslash\)t"}<<FF.\hyperlink{classgraph_afae7c6852c8de983693fb2fd108ed3c4}{tchk}[j].y()<<\textcolor{stringliteral}{"\(\backslash\)n"};
+169     flag=\textcolor{keyword}{true};
+170 
+171 \}
+\end{DoxyCode}
+
+
+Граф вызова функции\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=344pt]{class_doc_af5c9529b9108d9155b0d725f066b3d67_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{Doc@{Doc}!Read\+From@{Read\+From}}
+\index{Read\+From@{Read\+From}!Doc@{Doc}}
+\subsubsection[{\texorpdfstring{Read\+From(bool \&flag, Q\+File \&file, Q\+Vector$<$ graph $>$ \&\+F\+F)}{ReadFrom(bool &flag, QFile &file, QVector< graph > &FF)}}]{\setlength{\rightskip}{0pt plus 5cm}void Doc\+::\+Read\+From (
+\begin{DoxyParamCaption}
+\item[{bool \&}]{flag, }
+\item[{Q\+File \&}]{file, }
+\item[{Q\+Vector$<$ {\bf graph} $>$ \&}]{FF}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [virtual]}}\hypertarget{class_doc_aa9359b8e110d9d26bcd25b68e1001743}{}\label{class_doc_aa9359b8e110d9d26bcd25b68e1001743}
+
+
+Читает все прямые из .doc формата 
+
+\begin{DoxyWarning}{Предупреждения}
+Прямые должны быть оформлены соответственно.~\newline
+смотрите \hyperlink{class_doc_a00303c942160d3e6f69b38e387f12a03}{Doc\+::\+Save\+To()}; 
+\end{DoxyWarning}
+
+\begin{DoxyParams}{Аргументы}
+{\em flag} & удачно ли было проведено чтение 1 -\/ да 0 -\/нет \\
+\hline
+{\em file} & ссылка на файл \\
+\hline
+{\em FF} & промежуточный вектор с прямыми \\
+\hline
+\end{DoxyParams}
+
+
+Замещает \hyperlink{class_format_factory_ad3136c43b27e86cf755106381081e67c}{Format\+Factory}.
+
+
+
+См. определение в файле workwithfiles.\+cpp строка 97
+
+
+
+Перекрестные ссылки graph\+::blue, graph\+::green, graph\+::name, graph\+::pen и graph\+::red.
+
+
+\begin{DoxyCode}
+98 \{
+99     \textcolor{keyword}{class }\hyperlink{classgraph}{graph} nov;
+100     QTextStream in(&file);
+101     \textcolor{keywordtype}{int} i=-1;
+102     \textcolor{keywordflow}{while}(1)
+103     \{
+104         QString buf;
+105         buf=in.readLine();
+106         QStringList lst = buf.split(\textcolor{stringliteral}{"\(\backslash\)t"});
+107         \textcolor{keywordflow}{if}(lst.size()==5)
+108         \{
+109             nov.name=lst.at(0);
+110             nov.red=lst.at(1).toInt();
+111             nov.green=lst.at(2).toInt();
+112             nov.blue=lst.at(3).toInt();
+113             nov.pen=lst.at(4).toDouble();
+114             FF.push\_back(nov);
+115             i++;
+116         \}
+117         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(lst.size()==2)
+118         \{
+119             FF[i].tchk.push\_back(QPointF(lst.at(0).toDouble(),lst.at(1).toDouble()));
+120         \}
+121         \textcolor{keywordflow}{if}(buf.isEmpty() && lst.size()<=1)
+122         \{
+123             flag=\textcolor{keyword}{true};
+124             \textcolor{keywordflow}{break};
+125         \}
+126     \}
+127 \}
+\end{DoxyCode}
+\index{Doc@{Doc}!Read\+One\+From@{Read\+One\+From}}
+\index{Read\+One\+From@{Read\+One\+From}!Doc@{Doc}}
+\subsubsection[{\texorpdfstring{Read\+One\+From(bool \&flag, Q\+File \&file, graph \&\+F\+F)}{ReadOneFrom(bool &flag, QFile &file, graph &FF)}}]{\setlength{\rightskip}{0pt plus 5cm}void Doc\+::\+Read\+One\+From (
+\begin{DoxyParamCaption}
+\item[{bool \&}]{flag, }
+\item[{Q\+File \&}]{file, }
+\item[{{\bf graph} \&}]{FF}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [virtual]}}\hypertarget{class_doc_a3706c27d55dbb3fe7356a6b5dbb72b5c}{}\label{class_doc_a3706c27d55dbb3fe7356a6b5dbb72b5c}
+
+
+Читает одну прямую из .doc формата 
+
+\begin{DoxyWarning}{Предупреждения}
+Прямые должны быть оформлены соответственно.~\newline
+смотрите \hyperlink{class_doc_a00303c942160d3e6f69b38e387f12a03}{Doc\+::\+Save\+To()}; 
+\end{DoxyWarning}
+
+\begin{DoxyParams}{Аргументы}
+{\em flag} & удачно ли было проведено чтение 1 -\/ да 0 -\/нет \\
+\hline
+{\em file} & ссылка на файл \\
+\hline
+{\em FF} & промежуточный вектор с прямыми \\
+\hline
+\end{DoxyParams}
+
+
+Замещает \hyperlink{class_format_factory_a0002fa7430aefd926ac94c38155b146e}{Format\+Factory}.
+
+
+
+См. определение в файле workwithfiles.\+cpp строка 141
+
+
+
+Перекрестные ссылки graph\+::blue, graph\+::green, graph\+::name, graph\+::pen, graph\+::red и graph\+::tchk.
+
+
+\begin{DoxyCode}
+142 \{
+143     QTextStream in(&file);
+144     QString buf;
+145     buf=in.readLine();
+146     QStringList lst = buf.split(\textcolor{stringliteral}{"\(\backslash\)t"});
+147     FF.\hyperlink{classgraph_abfbbdbd09b20d6ef147ee966b1325595}{name}=lst.at(0);
+148     FF.\hyperlink{classgraph_aa3334acd551b2fc61901c2afdd4b2d8f}{red}=lst.at(1).toInt();
+149     FF.\hyperlink{classgraph_abb30b4156f98b6e0046f7192c389e4e4}{green}=lst.at(2).toInt();
+150     FF.\hyperlink{classgraph_a2007891f138555cc8be9ca822b9fa2db}{blue}=lst.at(3).toInt();
+151     FF.\hyperlink{classgraph_a237fa656ed0f8909b8eadd22aaeff422}{pen}=lst.at(4).toDouble();
+152     \textcolor{keywordflow}{while}(1)
+153     \{
+154         buf=in.readLine();
+155         QStringList lst1;
+156         lst1=buf.split(\textcolor{stringliteral}{"\(\backslash\)t"});
+157         \textcolor{keywordflow}{if}((buf.isEmpty() && lst1.size()<=1) || lst1.size()==5)
+158             \textcolor{keywordflow}{break};
+159         FF.\hyperlink{classgraph_afae7c6852c8de983693fb2fd108ed3c4}{tchk}.push\_back(QPointF(lst1.at(0).toDouble(),lst1.at(1).toDouble()));
+160     \}
+161     flag=\textcolor{keyword}{true};
+162 \}
+\end{DoxyCode}
+\index{Doc@{Doc}!Save\+To@{Save\+To}}
+\index{Save\+To@{Save\+To}!Doc@{Doc}}
+\subsubsection[{\texorpdfstring{Save\+To(bool \&flag, Q\+File \&file, Q\+Vector$<$ graph $>$ \&\+F\+F)}{SaveTo(bool &flag, QFile &file, QVector< graph > &FF)}}]{\setlength{\rightskip}{0pt plus 5cm}void Doc\+::\+Save\+To (
+\begin{DoxyParamCaption}
+\item[{bool \&}]{flag, }
+\item[{Q\+File \&}]{file, }
+\item[{Q\+Vector$<$ {\bf graph} $>$ \&}]{FF}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [virtual]}}\hypertarget{class_doc_a00303c942160d3e6f69b38e387f12a03}{}\label{class_doc_a00303c942160d3e6f69b38e387f12a03}
+
+
+Функция сохранения в формат .doc. 
+
+\begin{DoxyWarning}{Предупреждения}
+Важен определенный формат расположения , а именно \+: ~\newline
+Имя прямой \textquotesingle{}T\+AB\textquotesingle{} Красный цвет \textquotesingle{}T\+AB\textquotesingle{} Зеленый цвет \textquotesingle{}T\+AB\textquotesingle{} Синий цвет \textquotesingle{}T\+AB\textquotesingle{} Толщина~\newline
+Координата x \textquotesingle{}T\+AB\textquotesingle{} Координата y 
+\end{DoxyWarning}
+
+\begin{DoxyParams}{Аргументы}
+{\em flag} & определяет удачна ли была запись 1 -\/ да 0 -\/ нет \\
+\hline
+{\em file} & ссылка на файл \\
+\hline
+{\em FF} & все прямые для записи \\
+\hline
+\end{DoxyParams}
+
+
+Замещает \hyperlink{class_format_factory_ac787363aa133a274ae674526dcc2b301}{Format\+Factory}.
+
+
+
+См. определение в файле workwithfiles.\+cpp строка 128
+
+
+
+Перекрестные ссылки graph\+::tchk.
+
+
+\begin{DoxyCode}
+129 \{
+130     QTextStream out(&file);
+131     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i=0; i<FF.size(); i++)
+132     \{
+133         out << FF[i].name << \textcolor{stringliteral}{"\(\backslash\)t"} << FF[i].red << \textcolor{stringliteral}{"\(\backslash\)t"} << FF[i].green
+134             << \textcolor{stringliteral}{"\(\backslash\)t"} << FF[i].blue << \textcolor{stringliteral}{"\(\backslash\)t"} << FF[i].pen << \textcolor{stringliteral}{"\(\backslash\)n"};
+135         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} j=0; j<FF[i].tchk.size();j++)
+136             out<<FF[i].\hyperlink{classgraph_afae7c6852c8de983693fb2fd108ed3c4}{tchk}[j].x()<<\textcolor{stringliteral}{"\(\backslash\)t"}<<FF[i].tchk[j].y()<<\textcolor{stringliteral}{"\(\backslash\)n"};
+137     \}
+138     flag=\textcolor{keyword}{true};
+139 
+140 \}
+\end{DoxyCode}
+
+
+Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+\item 
+/home/silence/workplace/\+U\+I/c\+\_\+plus/\hyperlink{workwithfiles_8h}{workwithfiles.\+h}\item 
+/home/silence/workplace/\+U\+I/c\+\_\+plus/workwithfiles.\+cpp\end{DoxyCompactItemize}
