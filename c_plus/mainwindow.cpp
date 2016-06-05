@@ -14,6 +14,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->lineEditY->setValidator(doubler);
     free_index=-1;
     ui->add->setEnabled(0);
+    ui->Sort->setEnabled(0);
     litwin=NULL;
     DelWin=NULL;
     this->setWindowTitle("Graphics creator v. 1.1");
@@ -318,6 +319,8 @@ void MainWindow::on_lineEditY_textChanged(const QString &arg1)
 void MainWindow::on_UserCurve_currentIndexChanged(int index)
 {
     free_index=-1;
+    ui->Sort->setEnabled(!(ui->UserCurve->count()==0));
+
 }
 
 void MainWindow::on_actionDelete_curve_triggered()
