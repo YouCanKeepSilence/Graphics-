@@ -147,6 +147,8 @@ private Q_SLOTS:
     */
     void on_actionSave_current_curve_as_triggered();
 
+    void on_Sort_clicked();
+
 private:
      ///Проверяет есть ли существующие прямые при открытии файла.\n Если есть то предлагает их удалить и удаляет иначе открытие не произойдет
     void CheckVector(bool &okay);

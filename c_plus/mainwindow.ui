@@ -198,6 +198,20 @@
        </layout>
       </item>
       <item>
+       <widget class="QPushButton" name="Sort">
+        <property name="text">
+         <string>Sort current curve</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="SortIfCheched">
+        <property name="text">
+         <string>Sort with add point (all points)</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <spacer name="verticalSpacer">
         <property name="orientation">
          <enum>Qt::Vertical</enum>

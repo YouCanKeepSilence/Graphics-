@@ -9,6 +9,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     QDoubleValidator* doubler = new QDoubleValidator(this);
+    //doubler->setNotation(QDoubleValidator::StandardNotation);
     ui->lineEditX->setValidator(doubler);
     ui->lineEditY->setValidator(doubler);
     free_index=-1;
@@ -168,20 +169,23 @@ void graph::MoveFromBackWithout()
 {
     int i;
     QPointF buf;
-    for(i=tchk.size()-1;i>0;i--)
-        if(tchk[i].x()<tchk[i-1].x())
+    for(int j=0;j<tchk.size()-1;j++)
+    {
+        for(i=tchk.size()-1;i>0;i--)
         {
-            buf=tchk[i];
-            tchk[i]=tchk[i-1];
-            tchk[i-1]=buf;
+            if(tchk[i].x()<tchk[i-1].x())
+            {
+                buf=tchk[i];
+                tchk[i]=tchk[i-1];
+                tchk[i-1]=buf;
+            }
+            else if(tchk[i].x()==tchk[i-1].x())
+            {
+                tchk[i-1]=tchk[i];
+                tchk.erase(tchk.begin()+i);
+            }
         }
-        else if(tchk[i].x()==tchk[i-1].x())
-                {
-                       tchk[i-1]=tchk[i];
-                       tchk.erase(tchk.begin()+i);
-                }
-
-            else break;
+     }       //else break;
 }
 
 void MainWindow::on_add_clicked()
@@ -193,7 +197,8 @@ void MainWindow::on_add_clicked()
     statusBar()->showMessage("x= " + QString::number(x) +
                              "; y = " + QString::number(y)+"Free="+QString::number(free_index));
     base[i].tchk.push_back(QPointF(x,y));
-    base[i].MoveFromBackWithout();
+    if(ui->SortIfCheched->isChecked())
+        base[i].MoveFromBackWithout();
     base[i].curva->setSamples( base[i].tchk );
     reshow();
 }
@@ -321,6 +326,7 @@ void MainWindow::on_actionDelete_curve_triggered()
     {
         DelWin->close();
         delete DelWin;
+        DelWin=NULL;
     }
     if(ui->UserCurve->count()!=0)
         {
@@ -671,4 +677,12 @@ void MainWindow::on_actionSave_current_curve_as_triggered()
     else
         QMessageBox::critical(this, tr("Error"), tr("Задан пустой путь до файла.")); //Типо если файл нельзя читать то ошибко.
 
+}
+
+void MainWindow::on_Sort_clicked()
+{
+    int i=ui->UserCurve->currentIndex();
+    base[i].MoveFromBackWithout();
+    base[i].curva->setSamples(base[i].tchk);
+    reshow();
 }
