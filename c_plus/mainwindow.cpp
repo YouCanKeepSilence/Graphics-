@@ -8,10 +8,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    QDoubleValidator* doubler = new QDoubleValidator(this);
+    QRegExpValidator* numer=new QRegExpValidator( QRegExp( "[0-9]\\d{1,10}[.][0-9]\\d{1,10}" ));
     //doubler->setNotation(QDoubleValidator::StandardNotation);
-    ui->lineEditX->setValidator(doubler);
-    ui->lineEditY->setValidator(doubler);
+    ui->lineEditX->setValidator(numer);
+    ui->lineEditY->setValidator(numer);
     free_index=-1;
     ui->add->setEnabled(0);
     ui->Sort->setEnabled(0);
